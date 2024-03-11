@@ -1,0 +1,124 @@
+.container{
+    display: flex;
+    gap: 100px;
+    align-items: center;
+    padding-top: 10px;
+}
+.formcontainer{
+    font: 1em sans-serif;
+    align-items: center;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 30px;
+}
+.texto{
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    text-align: center;
+}
+.title{
+    font-size: 45px;
+    flex: 1;
+    font-weight: bold;
+}
+.desc{
+    font-size: 24px;
+    font-weight: 300;
+    flex: 1;
+    width: 80%;
+    text-align: center;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 50%;
+}
+.form input{
+    height: 5%;
+    padding: 20px;
+    border-radius: 5px;
+    border: 1px black;
+    outline: 1px black ;
+    background-color: #f4f4f5;
+    color: var(black);
+    font-family: 'Minha Fonte',sans-serif;
+    font-size: 20px;
+}
+.form textarea{
+    padding: 20px;
+    border-radius: 5px;
+    border: 1px black;
+    outline: 1px black ;
+    background-color: #f4f4f5;
+    color: var(black);
+    font-family: 'Minha Fonte',sans-serif;
+    font-size: 20px;
+}
+.form button{
+    padding: 20px;
+    background: linear-gradient(90deg, var(--labcolor) 0%, rgba(0,212,255,1) 100%);
+    color: var(--bg);
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 5%;
+    font-size: 20px;
+}
+@media (max-width:1280px){
+    .container{
+        flex-direction: column;
+    }
+    .form{
+        width: 70%;
+    }
+}
+@media (max-width:1024px){
+    .container{
+        flex-direction: column;
+    }
+    .form{
+        gap: 20px;
+        width: 50%;
+    }
+    .formcontainer{
+        gap: 20px;
+    }
+}
+@media (max-width:768px){
+    .container{
+        flex-direction: column;
+    }
+    .form{
+        gap: 20px;
+        width: 90%;
+    }
+    .formcontainer{
+        gap: 20px;
+    }
+}
+@media (max-width:480px){
+    .container{
+        flex-direction: column;
+    }
+    .form{
+        gap: 15px;
+    }
+    .formcontainer{
+        gap: 15px;
+    }
+    .title{
+        font-size: 35px;
+    }
+    .desc{
+        font-size: 18px;
+    }
+    .form input, .form textarea{
+        font-size: 16px;
+    }
+}

@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+.container{
+    background-color:white;
+    padding: 50px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    float: none;
+}
+.logo{
+    font-size: 30px;
+    font-weight: bold;
+    background: -webkit-linear-gradient(360deg,var(--labcolor), rgba(0,212,255,1));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.logo i{
+  float: left;
+  padding: 4px;
+  font-size: 30px;
+    font-weight: 500;
+    background: -webkit-linear-gradient(360deg,var(--labcolor), rgba(0,212,255,1));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

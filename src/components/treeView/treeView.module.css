@@ -1,0 +1,45 @@
+.caixa{
+    margin-top: 5px;
+    max-height: 400px;
+    max-width: 400px;
+    overflow-y: scroll;
+    font-family: 'MinhaFonte',sans-serif;
+    font-size:20px;
+}
+.caixa::-webkit-scrollbar{
+    width: 10px;
+}
+.caixa::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 3px grey;
+    border-radius: 10px;
+  }
+.caixa::-webkit-scrollbar-thumb {
+    background: linear-gradient(0deg, var(--labcolor) 0%, rgba(0,212,255,1) 100%);
+    border-radius: 10px;
+}
+.view{  
+    cursor: pointer;
+    margin: 5px;
+}
+.item{
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    list-style-type: none;
+    transition: 0.5s;  
+    width: 200px; 
+    margin-left: 5px;
+}
+.item :focus{
+    outline: none;
+}
+.item :hover{
+    background: linear-gradient(90deg, var(--labcolor) 0%, rgba(0,212,255,1) 100%);
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 2px;
+    border-radius: 10px;
+    color: white;
+    transition: 0.5s;
+    cursor: pointer;
+}
