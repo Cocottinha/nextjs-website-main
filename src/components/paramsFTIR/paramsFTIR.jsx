@@ -1,9 +1,8 @@
 const ParamsFTIR = (objeto) =>{
-    return(
-        
+    return(       
         <div className={styles.parametros}>
-            <h1>Parâmetros</h1>
-            <p>Tempo: {objeto.objeto.tempo}</p>
+            <h1>Parâmetros: </h1>
+            <p>Tempo{'(ms)'}: {objeto.objeto.tempo}</p>
             <p>Intervalo: {objeto.objeto.intervalo}</p>
             <p>Resolução: {objeto.objeto.resolucao}</p>
             <p>Data: {objeto.objeto.data}</p>

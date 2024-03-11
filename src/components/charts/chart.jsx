@@ -29,7 +29,7 @@ const PlotComponent = ({ x,y }) => {
             marker: { color: 'blue' },
           },
         ]}
-        className={styles.plot} layout={{title:"My Plot",autosize:true}} useResizeHandler={true}
+        className={styles.plot} layout={{title:"",autosize:true}} useResizeHandler={true}
       />
     </div>
   );
