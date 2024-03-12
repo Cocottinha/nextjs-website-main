@@ -40,30 +40,7 @@
     font-weight: 300;
     flex: 1;
 }
-.form{
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-.form input, 
-.form textarea{
-    padding: 20px;
-    border-radius: 5px;
-    border: 1px black;
-    outline: 1px black ;
-    background-color: #f4f4f5;
-    color: var(black);
-    font-family: Arial, Helvetica, sans-serif;
-}
-.form button{
-    padding: 20px;
-    background: linear-gradient(90deg, var(--labcolor) 0%, rgba(0,212,255,1) 100%);
-    color: var(--bg);
-    font-weight: bold;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
+
 @media (max-width:768px){
     .container{
         flex-direction: column;

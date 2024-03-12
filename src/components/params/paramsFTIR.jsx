@@ -1,3 +1,5 @@
+import styles from "./params.module.css"
+
 const ParamsFTIR = (objeto) =>{
     return(       
         <div className={styles.parametros}>

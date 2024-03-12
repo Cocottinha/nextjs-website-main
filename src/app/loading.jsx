@@ -1,6 +1,8 @@
-import { Spinner } from "@nextui-org/react"
-export default function Loading(){
+import styles from "./loading.module.css"
+
+const  Loading = () => {
     return(
-        <Spinner/>
+        <div className={styles.lds}></div>    
     )
 }
+export default Loading

@@ -12,9 +12,4 @@ const Grafico = async () => {
   );
 }
 
-// export function getServerSideProps(context) {
-//   const { diretorio } = context.query
-//   console.log(diretorio)
-// }
-
 export default Grafico

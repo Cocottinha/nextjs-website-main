@@ -2,9 +2,10 @@ import PlotComponent from "@/components/charts/chart";
 import { readTextFile } from "@/components/charts/getData";
 import styles from './grafico.module.css';
 import { getPost } from "@/lib/data";
-import ParamsXRF from "@/components/paramsXRF/paramsXRF";
-import ParamsFTIR from "@/components/paramsFTIR/paramsFTIR";
+import ParamsXRF from "@/components/params/paramsXRF";
+import ParamsFTIR from "@/components/params/paramsFTIR";
 import Image from "next/image";
+import ParamsMO from "@/components/params/paramsMO";
 
 const Grafico = async ( { params } ) => {
   const tecnica = params.tecnica.split('-');
@@ -87,7 +88,7 @@ const Grafico = async ( { params } ) => {
         <div className={styles.container}>
           <h1>{objetoAnalise.nomeDaTecnica}</h1>
           <Image src={file}/>
-          
+          <ParamsMO objeto={objetoAnalise}/>
         </div>
       );
     }

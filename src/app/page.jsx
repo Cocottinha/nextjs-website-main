@@ -1,5 +1,6 @@
 import styles from "@/app/home.module.css"
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const Home = () => { 
@@ -11,8 +12,8 @@ const Home = () => {
         A Equipe do Laboratório Móvel se mostra influente e uma potência na área das análises físico-químicas de obras de arte!
       </p>
       <div className={styles.buttons}>
-        <button className={styles.button}>Learn More</button>
-        <button className={styles.button}>Contact</button>
+        <Link href={"/about"} target="_blank"><button className={styles.button}>Learn More</button></Link>
+        <Link href={"/contact"} target="_blank"><button className={styles.button}>Contact</button></Link>
       </div>
       <h4>
           Orgãos de Fomento/Parceiros:

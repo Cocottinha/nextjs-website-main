@@ -3,27 +3,17 @@
     align-items: center;
     justify-content: center;
 }
-.formcontainer{
-    font: 1em sans-serif;
-    align-items: center;
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    gap: 20px;
-}
 .wrapper{
     width: 500px;
     background-color: var(--bg);
-
     padding: 50px;
     display: flex;
     flex-direction: column;
     text-align: center;
-    gap:30px ;
     border-radius: 5px;
 }
 .texto{
-    width: 100%;
+    width: 90%;
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -45,8 +35,7 @@
     flex-direction: column;
     gap: 20px;
 }
-.form input, 
-.form textarea{
+.form input{
     padding: 20px;
     border-radius: 5px;
     border: 1px black;
@@ -67,5 +56,27 @@
 @media (max-width:768px){
     .container{
         flex-direction: column;
+    }
+}
+@media (max-width:768px){
+    .container{
+        flex-direction: column;
+    }
+}
+@media (max-width:568px){
+
+}
+@media (max-width:468px){
+    .form{
+        width: 400px;
+        align-items: center;
+    }
+    .form input{
+        width: 330px;
+        align-items: center;
+    }
+    .form button{
+        width: 330px;
+        align-items: center;
     }
 }

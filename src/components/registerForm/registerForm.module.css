@@ -69,3 +69,17 @@
         flex-direction: column;
     }
 }
+@media (max-width:468px){
+    .form{
+        width: 400px;
+        align-items: center;
+    }
+    .form input{
+        width: 330px;
+        align-items: center;
+    }
+    .form button{
+        width: 330px;
+        align-items: center;
+    }
+}

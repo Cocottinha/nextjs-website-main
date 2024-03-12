@@ -26,8 +26,9 @@
     border: none;
     border-radius: 5px;
     font-weight: bold;
+    transition: 0.5s;
 }
-.button:first-child{
+.button:hover{
     background: linear-gradient(90deg, var(--labcolor) 0%, rgba(0,212,255,1) 100%);
     color: white;
 }
@@ -40,6 +41,10 @@
 .imgcontainer{
     flex: 1;
     position: relative;
+    transition: transform 0.5s;
+}
+.imgcontainer:hover{
+  transform: scale(1.1);
 }
 .heroImg{
     border-radius: 20px;
