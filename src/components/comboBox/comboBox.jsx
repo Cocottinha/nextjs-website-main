@@ -21,13 +21,13 @@ export default function ComboBox ({posts, setSortedPosts}){
 
         switch (option) {
             case '1': 
-                sortByDateAscending()
+                setSortedPosts(posts);
                 break;
             case '2': 
                 sortByDateDescending()
                 break;
             case '3': 
-                setSortedPosts(posts);
+                sortByDateAscending()
                 break;
             case '4': 
                 setSortedPosts([...posts].sort((a, b) => a.title.localeCompare(b.title)));
@@ -40,9 +40,9 @@ export default function ComboBox ({posts, setSortedPosts}){
         <div className={styles.button}>
             <h3>Filtro:</h3>
             <select value={selectedOption} id="filters" onChange={handleSelectChange}>
-                <option value="1">Data Asc.</option>
+                <option value="1">Nenhuma</option>
                 <option value="2">Data Desc.</option>
-                <option value="3">Nenhuma</option>
+                <option value="3">Data Asc.</option>
                 <option value="4">A-Z</option>
             </select>
         </div>
