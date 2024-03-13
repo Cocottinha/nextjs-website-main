@@ -53,7 +53,15 @@
     height: 130px;
     opacity: 0.9;
     margin-bottom: 20px;
+    transition: transform 0.5s;
 }
+.box:hover{
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+
 .box h1{
     background: -webkit-linear-gradient(360deg,var(--labcolor), rgba(0,212,255,1));
     -webkit-background-clip: text;

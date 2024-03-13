@@ -1,3 +1,7 @@
+.containerG{
+    display: flex;
+    flex-direction: column;
+}
 .container{
     display: flex;
     flex-wrap: wrap;
@@ -6,6 +10,11 @@
 }
 .cont{
     width: 30%;
+}
+.combox{
+    text-align: right;
+    padding-right: 5%;
+    padding-bottom: 5%;
 }
 @media (max-width: 1280px){
     .cont{

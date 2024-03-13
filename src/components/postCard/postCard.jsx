@@ -14,8 +14,7 @@ const PostCard = ({post}) => {
             </div>
             <div className={styles.bottom}>
                 <h1 className={styles.title}>{post.title}</h1>
-                <p className={styles.desc}>{post.desc}</p>
-                
+                <p className={styles.desc}>{post.desc}</p>                
             </div>
         </div>
         </Link>
