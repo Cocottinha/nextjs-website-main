@@ -4,7 +4,7 @@
     max-width: 400px;
     overflow-y: scroll;
     font-family: 'MinhaFonte',sans-serif;
-    font-size:20px;
+    font-size:24px;
 }
 .caixa::-webkit-scrollbar{
     width: 10px;

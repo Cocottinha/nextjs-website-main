@@ -48,9 +48,9 @@ const SinglePostPage = async ({ params }) => {
                         <span className={styles.detailValue}>{post.createdAt.toString().slice(0,10)}</span>
                     </div>
                 </div>
-                <div className={styles.content}>
+                {/* <div className={styles.content}>
                     {post.desc}
-                </div>
+                </div> */}
                 <div>
                     <h2 className={styles.tecnicas}>
                         Técnicas
