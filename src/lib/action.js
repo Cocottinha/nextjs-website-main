@@ -133,10 +133,10 @@ export const login = async (prevState, formData)=>{
     const {username, password} = Object.fromEntries(formData)
 
     try{
-        await signIn("credentials",{username,password})
+        await signIn("credentials", { username, password })
     }
     catch(err){
-        console.log(err)
+        console.log("Error on login: \n" + err)
         if(err.message.includes("CredentialsSignin")){
             return{error: "Username or Password invalid!"}
         }

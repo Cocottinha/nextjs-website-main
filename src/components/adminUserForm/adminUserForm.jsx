@@ -1,5 +1,6 @@
-import styles from "./adminPosts.module.css"
-
-const adminUsers = () =>{
-    
+const AdminUserForm = () =>{
+    return(
+        <div>AdminUserForm</div>
+    )
 }
+export default AdminUserForm

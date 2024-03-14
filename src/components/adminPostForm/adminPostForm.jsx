@@ -1,5 +1,8 @@
-import styles from "./adminPosts.module.css"
+import styles from "./adminPostsForm.module.css"
 
-const adminPosts = () =>{
-    
+const AdminPostsForm = () =>{
+    return(
+        <div>AdminPostsForm</div>
+    )
 }
+export default AdminPostsForm

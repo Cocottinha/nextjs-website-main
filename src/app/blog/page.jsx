@@ -5,11 +5,10 @@ import ComboBox from "@/components/comboBox/comboBox";
 import { useEffect, useState } from "react";
 
 const getData = async () => {
-    const res = await fetch("http://localhost:3000/api/blog",{next:{revalidate:3600}});
+    const res = await fetch("/api/blog",{next:{revalidate:3600}});
 
     if(!res.ok){
         throw new Error ("Wrong")
-
     }
     return res.json();
 };
@@ -31,19 +30,6 @@ const Blog = async () =>{
     }, []);
     
     const [sortedPosts, setSortedPosts] = useState([]);
-
-    // console.log(JSON.stringify(posts, null, 2))
-    // posts.sort((a, b) => {
-    //     if (a.createdAt.valueOf() > b.createdAt.valueOf()) {
-    //         return -1
-    //     }
-    //     if(a.createdAt.valueOf() < b.createdAt.valueOf()) {
-    //         return 1
-    //     }
-    //     return 0
-    // })
-    // console.log()
-    // console.log(JSON.stringify(posts, null, 2))
 
     return(
         <div className={styles.containerG}>

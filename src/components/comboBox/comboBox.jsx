@@ -41,8 +41,8 @@ export default function ComboBox ({posts, setSortedPosts}){
             <h3>Filtro:</h3>
             <select value={selectedOption} id="filters" onChange={handleSelectChange}>
                 <option value="1">Nenhuma</option>
-                <option value="2">Data Desc.</option>
-                <option value="3">Data Asc.</option>
+                <option value="2">Mais Novo</option>
+                <option value="3">Mais Antigo</option>
                 <option value="4">A-Z</option>
             </select>
         </div>

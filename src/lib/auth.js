@@ -8,27 +8,30 @@ import { authConfig } from "./auth.config";
 
 const login = async (credentials) => {
     try {
-        connectToDB()
-        const user = await User.findOne({username: credentials.username})
+        try {
+            connectToDB()
+            const user = await User.findOne({username: credentials.username})
 
-        if(!user){
-            throw new Error("Wrong cred!")
+            if(!user){
+                throw new Error("Wrong cred!")
+            }
+
+            const isPasswordCorrect = await bcrypt.compare(credentials.password, user.password)
+
+            if(!isPasswordCorrect){
+                throw new Error("Wrong cred!")
+            }
+
+            return user
+
+        } catch (error) {
+            console.log(error)
+            throw new Error ("Failed to login!")
         }
-
-        const isPasswordCorrect = await bcrypt.compare(credentials.password, user.password)
-
-        if(!isPasswordCorrect){
-            throw new Error("Wrong cred!")
-        }
-
-        return user
-
     } catch (error) {
-        console.log(error)
-        throw new Error ("Failed to login!")
+        return null
     }
 }
-
 
 export const {
     handlers:{GET,POST}, 
@@ -38,44 +41,39 @@ export const {
     = NextAuth({
         ...authConfig,
     providers:[
-        GitHub({
-            clientId:process.env.GITHUB_ID, 
-            clientSecret:process.env.GITHUB_SECRET
-        }),
+        // GitHub({
+        //     clientId:process.env.GITHUB_ID, 
+        //     clientSecret:process.env.GITHUB_SECRET
+        // }),
         CredentialsProvider({
             async authorize(credentials){
-                try {
-                    const user = await login(credentials)
-                    return user
-                } catch (err) {
-                    return null;
-                }
+                return await login(credentials)
             }
         })
     ],
     callbacks:{
         async signIn({user, account, profile}){
             console.log(user,account,profile)
-            if(account.provider === "github"){
-                connectToDB()
-                try{
-                    const user = await User.findOne({email:profile.email})
+            // if(account.provider === "github"){
+            //     connectToDB()
+            //     try{
+            //         const user = await User.findOne({email:profile.email})
 
-                    if(!user){
-                        const newUser = new User({
-                            name:profile.name,
-                            email: profile.email,
-                            image: profile.image
-                        })
+            //         if(!user){
+            //             const newUser = new User({
+            //                 name:profile.name,
+            //                 email: profile.email,
+            //                 image: profile.image
+            //             })
 
-                        await newUser.save()
-                    }
+            //             await newUser.save()
+            //         }
 
-                }
-                catch(err){
-                    return false
-                }
-            }
+            //     }
+            //     catch(err){
+            //         return false
+            //     }
+            // }
             return true
         },
         ...authConfig.callbacks,
