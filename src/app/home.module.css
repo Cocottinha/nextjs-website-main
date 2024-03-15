@@ -26,10 +26,15 @@
     border: none;
     border-radius: 5px;
     font-weight: bold;
-    transition: 0.5s;
+    /* -webkit-transition: background-color 2s ease-out;
+    -moz-transition: background-color 2s ease-out;
+    -o-transition: background-color 2s ease-out; */
+    transition: color, background-color;
+    transition-duration: 0.5s;
+    transition-timing-function: ease;
 }
 .button:hover{
-    background: linear-gradient(90deg, var(--labcolor) 0%, rgba(0,212,255,1) 100%);
+    background-color: gray;
     color: white;
 }
 .brands{

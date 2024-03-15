@@ -12,7 +12,7 @@
 .logo{
     font-size: 30px;
     font-weight: bold;
-    background: -webkit-linear-gradient(360deg,var(--labcolor), rgba(0,212,255,1));
+    background: -webkit-linear-gradient(360deg,var(--labcolor), #00f0ff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -21,7 +21,7 @@
   padding: 4px;
   font-size: 30px;
     font-weight: 500;
-    background: -webkit-linear-gradient(360deg,var(--labcolor), rgba(0,212,255,1));
+    background: -webkit-linear-gradient(360deg,var(--labcolor), #00f0ff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }

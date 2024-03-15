@@ -1,8 +1,8 @@
 import styles from "./loading.module.css"
 
-const  Loading = () => {
+function Loading() {
     return(
-        <div className={styles.lds}></div>    
+        <div className={styles.lds}>Loading...</div>    
     )
 }
 export default Loading

@@ -6,6 +6,8 @@ import ParamsXRF from "@/components/params/paramsXRF";
 import ParamsFTIR from "@/components/params/paramsFTIR";
 import Image from "next/image";
 import ParamsMO from "@/components/params/paramsMO";
+import { Suspense } from "react";
+import Loading from "@/app/loading";
 
 const Grafico = async ( { params } ) => {
   const tecnica = params.tecnica.split('-');
@@ -30,7 +32,9 @@ const Grafico = async ( { params } ) => {
       return (
         <div className={styles.container}>
           <h1>{objetoAnalise.nomeDaTecnica}</h1>
-          <PlotComponent x={arrayA} y={arrayB}/>
+          <Suspense fallback={<Loading/>}>
+            <PlotComponent x={arrayA} y={arrayB}/>
+          </Suspense>            
           <ParamsXRF objeto={objetoAnalise}/>
         </div>
       );

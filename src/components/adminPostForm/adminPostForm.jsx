@@ -1,4 +1,4 @@
-import styles from "./adminPostsForm.module.css"
+import styles from "./adminPostForm.module.css"
 
 const AdminPostsForm = () =>{
     return(
