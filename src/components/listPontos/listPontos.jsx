@@ -40,15 +40,29 @@ const ListPontos = ({ data, slug }) => {
                     <h2>Pontos</h2>
                     <div className={styles.column}>
                         <ul>
-                            {filteredPosts.map((ponto) => (
-                                <li
-                                    key={ponto.IdPonto}
-                                    onClick={() => handlePontoClick(ponto.IdPonto)}
-                                    className={selectedPonto === ponto.IdPonto ? styles.selected : ""}
-                                >
-                                    {ponto.Nome}
-                                </li>
-                            ))}
+                            {filteredPosts.length > 0 ? (
+                                filteredPosts.map((ponto) => (
+                                    <li
+                                        key={ponto.IdPonto}
+                                        onClick={() => handlePontoClick(ponto.IdPonto)}
+                                        className={selectedPonto === ponto.IdPonto ? styles.selected : ""}
+                                    >
+                                        {ponto.Nome}
+                                    </li>
+                                ))
+                                ):(
+                                    data.Pontos.map((ponto) => (
+                                        <li
+                                            key={ponto.IdPonto}
+                                            onClick={() => handlePontoClick(ponto.IdPonto)}
+                                            className={selectedPonto === ponto.IdPonto ? styles.selected : ""}
+                                        >
+                                            {ponto.Nome}
+                                        </li>
+                                    ))
+                                )}
+                            
+                            
                         </ul>
                     </div>
                 </div>
