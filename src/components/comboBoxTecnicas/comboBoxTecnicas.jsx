@@ -1,42 +1,46 @@
 "use client"
-import { useState } from "react"
-import styles from "./comboBoxTecnicas.module.css"
+import { useState } from "react";
+import styles from "./comboBoxTecnicas.module.css";
 
-export default function ComboBox ({posts, setSortedPosts}){
-
-    const [selectedOption , setSelectedOption] = useState('1')
+export default function ComboBox({ pontos, setSortedPosts }) {
+    
+    const [selectedOption, setSelectedOption] = useState('1');
+    console.log(pontos)
     const handleSelectChange = (event) => {
         const option = event.target.value;
-
         setSelectedOption(option);
 
-        const sortByDateAscending = () => {
-            setSortedPosts([...posts].sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt)));
-        };
-    
-        const sortByDateDescending = () => {
-            setSortedPosts([...posts].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)));
-        };
-
-
         switch (option) {
-            case '1': 
-                setSortedPosts(posts);
+            case '1':
+                setSortedPosts(pontos);
                 break;
-            case '2': 
-                sortByDateDescending()
+            case '2':
+                filterByTechnique("MO");
                 break;
-            case '3': 
-                sortByDateAscending()
+            case '3':
+                filterByTechnique("FTIR");
                 break;
-            case '4': 
-                setSortedPosts([...posts].sort((a, b) => a.title.localeCompare(b.title)));
+            case '4':
+                filterByTechnique("XRF");
                 break;
             default:
                 break;
         }
     };
-    return(
+
+    const filterByTechnique = (technique) => {
+        if (!Array.isArray(pontos)) {
+            console.log("pontos não é um array");
+            return;
+        }
+
+        const filteredPosts = pontos.filter(ponto => {
+            return ponto.AnaliseTecnica.some(tecnica => tecnica.nomeDaTecnica.startsWith(technique));
+        });
+        setSortedPosts(filteredPosts);
+    };
+
+    return (
         <div className={styles.button}>
             <h3>Filtro:</h3>
             <select value={selectedOption} id="filters" onChange={handleSelectChange}>
@@ -46,5 +50,5 @@ export default function ComboBox ({posts, setSortedPosts}){
                 <option value="4">XRF</option>
             </select>
         </div>
-    )
+    );
 }
