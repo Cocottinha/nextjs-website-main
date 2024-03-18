@@ -2,25 +2,26 @@
 import { useState } from "react";
 import styles from "./comboBoxTecnicas.module.css";
 
-export default function ComboBox({ pontos, setSortedPosts }) {
+export default function ComboBox({ pontos, setSortedPosts, onSelectChange }) {
     
-    const [selectedOption, setSelectedOption] = useState('1');
-    console.log(pontos)
+    const [selectedOption, setSelectedOption] = useState('Todas');
+
     const handleSelectChange = (event) => {
         const option = event.target.value;
         setSelectedOption(option);
+        onSelectChange(option)
 
         switch (option) {
-            case '1':
+            case 'Todas':
                 setSortedPosts(pontos);
                 break;
-            case '2':
+            case 'MO':
                 filterByTechnique("MO");
                 break;
-            case '3':
+            case 'FTIR':
                 filterByTechnique("FTIR");
                 break;
-            case '4':
+            case 'XRF':
                 filterByTechnique("XRF");
                 break;
             default:
@@ -44,10 +45,10 @@ export default function ComboBox({ pontos, setSortedPosts }) {
         <div className={styles.button}>
             <h3>Filtro:</h3>
             <select value={selectedOption} id="filters" onChange={handleSelectChange}>
-                <option value="1">Todas</option>
-                <option value="2">MO</option>
-                <option value="3">FTIR</option>
-                <option value="4">XRF</option>
+                <option value="Todas">Todas</option>
+                <option value="MO">MO</option>
+                <option value="FTIR">FTIR</option>
+                <option value="XRF">XRF</option>
             </select>
         </div>
     );
