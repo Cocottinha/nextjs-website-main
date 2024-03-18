@@ -59,17 +59,21 @@ const ListPontos = ({ data, slug }) => {
                             <ul>
                                 {selectedPonto &&
                                     data.Pontos.find((ponto) => ponto.IdPonto === selectedPonto).AnaliseTecnica.map(
-                                        (tecnica, index) => tecnica.nomeDaTecnica.startsWith(selectedOption) && ( 
-                                            <Link
-                                                target="blank_"
-                                                href={{
-                                                    pathname: "/grafico/" + slug + "-" + tecnica.nomeDaTecnica,
-                                                }}
-                                            >
-                                                <li key={index}>{tecnica.nomeDaTecnica}</li>
-                                            </Link>
+                                        (tecnica, index) => (
+                                            tecnica.nomeDaTecnica.startsWith(selectedOption) || selectedOption === 'Todas' ? (
+                                                <Link
+                                                    target="blank_"
+                                                    href={{
+                                                        pathname: "/grafico/" + slug + "-" + tecnica.nomeDaTecnica,
+                                                    }}
+                                                    key={index}
+                                                >
+                                                    <li>{tecnica.nomeDaTecnica}</li>
+                                                </Link>
+                                            ) : null
                                         )
-                                    )}
+                                    )
+                                }
                             </ul>
                         </div>
                     </div>
