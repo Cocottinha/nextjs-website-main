@@ -1,8 +1,8 @@
 import PlotComponent from "@/components/charts/chart"
-import { readTextFile } from "@/components/charts/getData";
+import { readTextFileFTIR } from "@/components/charts/getDataFTIR";
 
 const Grafico = async () => {
-  const { arrayA, arrayB } = await readTextFile('public/00105-Spectrometer Mode.txt');
+  const { arrayA, arrayB } = await readTextFileFTIR('public/00105-Spectrometer Mode.txt');
 
   return (
     <div className={styles.container}>

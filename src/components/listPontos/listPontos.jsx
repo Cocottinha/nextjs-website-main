@@ -28,8 +28,8 @@ const ListPontos = ({ data, slug }) => {
         setIsTechniquesListVisible(false);
     };
 
-    const handleSelectChange = (option) => {
-        setSelectedOption(option);
+    const handleSelectChange = (selectedOption) => {
+        setSelectedOption(selectedOption);
     };
 
     return (
@@ -40,8 +40,9 @@ const ListPontos = ({ data, slug }) => {
                     <h2>Pontos</h2>
                     <div className={styles.column}>
                         <ul>
-                            {filteredPosts.length > 0 ? (
-                                filteredPosts.map((ponto) => (
+                            {filteredPosts.length > 0 ? 
+                                (
+                                    filteredPosts.map((ponto) => (
                                     <li
                                         key={ponto.IdPonto}
                                         onClick={() => handlePontoClick(ponto.IdPonto)}
@@ -51,7 +52,8 @@ const ListPontos = ({ data, slug }) => {
                                     </li>
                                 ))
                                 ):(
-                                    data.Pontos.map((ponto) => (
+                                    selectedOption === "Todas" ? (
+                                        data.Pontos.map((ponto) => (
                                         <li
                                             key={ponto.IdPonto}
                                             onClick={() => handlePontoClick(ponto.IdPonto)}
@@ -60,9 +62,8 @@ const ListPontos = ({ data, slug }) => {
                                             {ponto.Nome}
                                         </li>
                                     ))
-                                )}
-                            
-                            
+                                    ):null
+                                )}                           
                         </ul>
                     </div>
                 </div>
