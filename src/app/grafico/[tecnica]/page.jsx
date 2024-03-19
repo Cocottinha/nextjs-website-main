@@ -70,7 +70,7 @@ const Grafico = async ( { params } ) => {
     });
     if (objetoAnalise != null) {
       const file = objetoAnalise.diretorio
-      const { arrayA, arrayB } = await readTextFileFTIR("C:/Users/CottaLISCOMP/nextjs-website-main/public/ponto_M_04_vermelho.dpt");
+      const { arrayA, arrayB } = await readTextFileFTIR(file);
       return (
         <div className={styles.container}>
           <h1>{objetoAnalise.nomeDaTecnica}</h1>
