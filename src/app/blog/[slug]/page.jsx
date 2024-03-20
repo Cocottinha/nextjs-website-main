@@ -6,6 +6,7 @@ import {getPost} from "@/lib/data"
 import ComboBox from "@/components/comboBoxTecnicas/comboBoxTecnicas"
 import ListPontos from "@/components/listPontos/listPontos"
 import Loading from "@/app/loading"
+import PontoAnalise from "@/components/pontoAnalise/pontoAnalise"
 
 const getData = async (slug) => {
     const res = await fetch(`http://localhost:3000/api/blog/${slug}`,{next:{revalidate:3600}});
@@ -16,26 +17,29 @@ const getData = async (slug) => {
     return res.json();
 };
 
-export const generateMetadata = async ({params}) => {
-    const {slug} = params
+// export const generateMetadata = async ({params}) => {
+//     const {slug} = params
 
-    const post = await getPost(slug)
-    return{
-        title:post.title,
-        description:post.desc,
-        Pontos:post.Pontos
-    }
-  }
+//     const post = await getPost(slug)
+//     return{
+//         title:post.title,
+//         description:post.desc,
+//         Pontos:post.Pontos
+//     }
+//   }
 const SinglePostPage = async ({ params }) => {
 
     const { slug } = params;
-    const post = await getData(slug)
+    const post = await getData(slug);
     
     return (
         <div className={styles.container}>
             {post.img && 
-            <div className={styles.imgContainer}>
-                <Image src={post.img} alt="" width={700} height={700}  className={styles.img} />
+            <div className={styles.imgContainer} id="imgContainer">
+                <Image src={post.img} alt="" width={700} height={700} className={styles.img}/>
+                {post.Pontos.map((ponto) => (                   
+                    <PontoAnalise key={ponto.IdPonto} IdPonto={ponto.IdPonto} X={ponto.X} Y={ponto.Y} largImg={post.X} altImg={post.Y}/>
+                ))}                           
             </div>}
             <div className={styles.textContainer}>
                 <h1 className={styles.title}>{post.title}</h1>
@@ -50,14 +54,8 @@ const SinglePostPage = async ({ params }) => {
                         <span className={styles.detailValue}>{post.createdAt.toString().slice(0,10)}</span>
                     </div>
                 </div>
-                {/* <div className={styles.content}>
-                    {post.desc}
-                </div> */}
-                {/* <ComboBox/> */}
                 <div className={styles.row}>
                     <ListPontos data={post} slug={post.slug}/>
-                    
-                    {/* <TreeView data={post} /> */}
                 </div>
             </div>
         </div>

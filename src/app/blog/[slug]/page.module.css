@@ -8,8 +8,16 @@
     position: relative;
     height: calc(100vh - 200px);
 }
+.dot{
+    position: absolute;
+    background-color: red;
+    top: 100px;
+    left: 100px;
+    width: 10px;
+    height: 10px;
+}
 .img{
-    object-fit: contain;
+    object-fit:fill;
 }
 .textContainer{
     flex: 1; 

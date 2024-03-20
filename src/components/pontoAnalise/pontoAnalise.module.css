@@ -1,0 +1,14 @@
+.ponto{
+    position: absolute;
+    background-color: red;
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+}
+.ponto:hover{
+    cursor: pointer;
+    background-color: antiquewhite;
+    border-color: black;
+    border: 2px solid;
+    font-weight: bolder;
+}
