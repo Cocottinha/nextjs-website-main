@@ -1,9 +1,8 @@
 import Image from "next/image"
 import styles from "./page.module.css"
 import PostUser from "@/components/postUser/postUser"
-import { Suspense } from "react"
+import { Suspense} from "react"
 import {getPost} from "@/lib/data"
-import ComboBox from "@/components/comboBoxTecnicas/comboBoxTecnicas"
 import ListPontos from "@/components/listPontos/listPontos"
 import Loading from "@/app/loading"
 import PontoAnalise from "@/components/pontoAnalise/pontoAnalise"
@@ -17,21 +16,10 @@ const getData = async (slug) => {
     return res.json();
 };
 
-// export const generateMetadata = async ({params}) => {
-//     const {slug} = params
-
-//     const post = await getPost(slug)
-//     return{
-//         title:post.title,
-//         description:post.desc,
-//         Pontos:post.Pontos
-//     }
-//   }
 const SinglePostPage = async ({ params }) => {
-
     const { slug } = params;
     const post = await getData(slug);
-    
+
     return (
         <div className={styles.container}>
             {post.img && 

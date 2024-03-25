@@ -28,18 +28,18 @@ const Links = ({ session }) => {
   const [open, setOpen] = useState(false);
   const linksRef = useRef(null);
 
-  useEffect(() => {
-    function handleClickOutside(event) {
-      if (linksRef.current && !linksRef.current.contains(event.target)) {
-        setOpen(false);
-      }
-    }
+  // useEffect(() => {
+  //   function handleClickOutside(event) {
+  //     if (linksRef.current && !linksRef.current.contains(event.target)) {
+  //       setOpen(false);
+  //     }
+  //   }
 
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
+  //   document.addEventListener("mousedown", handleClickOutside);
+  //   return () => {
+  //     document.removeEventListener("mousedown", handleClickOutside);
+  //   };
+  // }, [open]);
 
   return (
     <div className={styles.container}>
