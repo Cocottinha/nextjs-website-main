@@ -69,5 +69,4 @@ const PontoAnalise = ({IdPonto, X, Y, largImg, altImg}) => {
         <div className={styles.ponto} id={IdPonto}>Ponto_{IdPonto}</div>
     );
 };
-
 export default PontoAnalise;
