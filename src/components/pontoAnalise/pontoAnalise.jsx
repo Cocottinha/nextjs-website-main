@@ -31,28 +31,33 @@ const PontoAnalise = ({IdPonto, X, Y, largImg, altImg}) => {
         if (typeof window === 'undefined') return; 
 
         const divCoord = document.getElementById(IdPonto);
-        let a, b;
+        let a, b, y;
 
         switch (true) {
             case (windowSize.width < 476):
+                y = (340*100)/largImg;
                 a = largImg / 340;
-                b = altImg / 399;
+                b = altImg / (altImg * (y/100));
                 break;
             case (windowSize.width < 641):
+                y = (435*100)/largImg;
                 a = largImg / 435;
-                b = altImg / 510;
+                b = altImg / (altImg * (y/100));
                 break;
             case (windowSize.width < 769):
+                y = (600*100)/largImg;
                 a = largImg / 600;
-                b = altImg / 704;
+                b = altImg / (altImg * (y/100));
                 break;
             case (windowSize.width < 1024):
+                y = (728*100)/largImg;
                 a = largImg / 728;
-                b = altImg / 854;
+                b = altImg / (altImg * (y/100));
                 break;
             case (windowSize.width < 1260):
+                y = (984*100)/largImg;
                 a = largImg / 984;
-                b = altImg / 1154;
+                b = altImg / (altImg * (y/100));
                 break;
             default:
                 a = largImg / 700;
