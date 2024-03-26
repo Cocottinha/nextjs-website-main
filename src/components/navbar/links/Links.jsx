@@ -61,7 +61,7 @@ const Links = ({ session }) => {
         )}
       </div>
       <button className={styles.btnMenu} onClick={() => setOpen((prev) => !prev)}>
-        <Image src="/burger-menu-svgrepo-com.svg" alt="" width={40} height={40} />
+        <Image src="/burger-menu-svgrepo-com.svg" alt="" width={40} height={40} priority={true} />
       </button>
       <div className={`${styles.mobileLinks} ${open ? styles.open : ""}`}>
         {open &&

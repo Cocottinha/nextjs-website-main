@@ -24,7 +24,7 @@ const SinglePostPage = async ({ params }) => {
         <div className={styles.container}>
             {post.img && 
             <div className={styles.imgContainer} id="imgContainer">
-                <Image src={post.img} alt="" width={700} height={700} className={styles.img}/>
+                <Image src={post.img} alt={post.desc} width={700} height={700} className={styles.img} priority={true}/>
                 {post.Pontos.map((ponto) => (                   
                     <PontoAnalise key={ponto.IdPonto} IdPonto={ponto.IdPonto} X={ponto.X} Y={ponto.Y} largImg={post.X} altImg={post.Y}/>
                 ))}                           
