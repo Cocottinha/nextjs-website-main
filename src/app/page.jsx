@@ -37,7 +37,7 @@ const Home = () => {
       </div>
     </div>
     <div className={styles.imgcontainer}>
-      <Image src="/lbmovel.jpg" priority unoptimized={true} alt="" width={700} height={450} className={styles.heroImg}></Image>
+      <Image src="/lbmovel.jpg" priority unoptimized={true} alt="labmovel" width={700} height={450} className={styles.heroImg}></Image>
     </div>
   </div>;
 };

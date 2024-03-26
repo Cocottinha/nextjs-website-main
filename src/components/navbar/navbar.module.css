@@ -16,12 +16,8 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-.logo i{
+.logoI{
   float: left;
   padding: 4px;
   font-size: 30px;
-    font-weight: 500;
-    background: -webkit-linear-gradient(360deg,var(--labcolor), #00f0ff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
