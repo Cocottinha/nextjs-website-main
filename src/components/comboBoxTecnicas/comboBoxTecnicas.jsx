@@ -43,7 +43,7 @@ export default function ComboBox({ pontos, setSortedPosts, onSelectChange }) {
 
     return (
         <div className={styles.button}>
-            <h3>Filtro:</h3>
+            <h3>Filtrar:</h3>
             <select value={selectedOption} id="filters" onChange={handleSelectChange}>
                 <option value="Todas">Todas</option>
                 <option value="MO">MO</option>

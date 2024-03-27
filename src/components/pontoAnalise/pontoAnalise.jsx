@@ -35,29 +35,29 @@ const PontoAnalise = ({IdPonto, X, Y, largImg, altImg}) => {
 
         switch (true) {
             case (windowSize.width < 476):
-                y = (340*100)/largImg;
+                y = (340)/largImg;
                 a = largImg / 340;
-                b = altImg / (altImg * (y/100));
+                b = altImg / (altImg * (y));
                 break;
             case (windowSize.width < 641):
-                y = (435*100)/largImg;
+                y = (435)/largImg;
                 a = largImg / 435;
-                b = altImg / (altImg * (y/100));
+                b = altImg / (altImg * (y));
                 break;
             case (windowSize.width < 769):
-                y = (600*100)/largImg;
+                y = (600)/largImg;
                 a = largImg / 600;
-                b = altImg / (altImg * (y/100));
+                b = altImg / (altImg * (y));
                 break;
             case (windowSize.width < 1024):
-                y = (728*100)/largImg;
+                y = (728)/largImg;
                 a = largImg / 728;
-                b = altImg / (altImg * (y/100));
+                b = altImg / (altImg * (y));
                 break;
             case (windowSize.width < 1260):
-                y = (984*100)/largImg;
+                y = (984)/largImg;
                 a = largImg / 984;
-                b = altImg / (altImg * (y/100));
+                b = altImg / (altImg * (y));
                 break;
             default:
                 a = largImg / 700;

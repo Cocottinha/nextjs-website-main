@@ -3,7 +3,6 @@ import {getUser} from "@/lib/data"
 import Image from "next/image"
 
 const PostUser = async ({userId}) => {
-
     const user = await getUser(userId)
 
     return(
@@ -16,7 +15,7 @@ const PostUser = async ({userId}) => {
                 width={50}
             />
             <div className={styles.texts}>
-                <span className={styles.title}>Author</span>
+                <span className={styles.title}>Autor(a)</span>
                 <span className={styles.username}>{user.username}</span>
             </div>
             

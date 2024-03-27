@@ -37,7 +37,7 @@ const ListPontos = ({ data, slug }) => {
             <ComboBox pontos={data.Pontos} setSortedPosts={handleFilteredPostsChange} onSelectChange={handleSelectChange} />
             <div className={styles.caixa}>
                 <div className={styles.row}>
-                    <h2>Pontos</h2>
+                    <h2>Pontos:</h2>
                     <div className={styles.column}>
                         <ul>
                             {filteredPosts.length > 0 ? 
@@ -69,7 +69,7 @@ const ListPontos = ({ data, slug }) => {
                 </div>
                 {isTecnicaListVisible && (
                     <div className={styles.row} id="hide" hidden>
-                        <h2>Técnicas</h2>
+                        <h2>Técnicas:</h2>
                         <div className={styles.column}>
                             <ul>
                                 {selectedPonto &&

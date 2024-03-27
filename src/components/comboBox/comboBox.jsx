@@ -38,7 +38,7 @@ export default function ComboBox ({posts, setSortedPosts}){
     };
     return(
         <div className={styles.button}>
-            <h3>Filtro:</h3>
+            <h3>Filtrar:</h3>
             <select value={selectedOption} id="filters" onChange={handleSelectChange}>
                 <option value="1">Nenhuma</option>
                 <option value="2">Mais Novo</option>
