@@ -28,8 +28,6 @@ export const addUser = async(prevState, formData)=>{
  }
 
 export const addPost = async(prevState, formData)=>{
-
-
     const {title, desc, slug, userId} = Object.fromEntries(formData)
 
     try {

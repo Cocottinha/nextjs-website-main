@@ -9,7 +9,6 @@ const Navbar = async() => {
     return(
         <div className={styles.container}>
             <div>
-            {/* <i className="material-icons" style={{fontSize:"30px"}}>layers</i> */}
                 <Link href="/" className={styles.logo}><Image src="/Lab.Mov_Símbolo_Principal.svg" width={40} height={40} className={styles.logoI} alt="logo"/>Lab.Data</Link>
             </div>          
             <div>

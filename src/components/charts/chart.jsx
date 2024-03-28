@@ -13,8 +13,6 @@ const PlotComponent = ({ x,y }) => {
      setPlotLoaded(true);
   }, []);
 
-
-
   const xValues = x;
   const yValues = y;
 

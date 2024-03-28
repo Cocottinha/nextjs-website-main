@@ -14,7 +14,6 @@ const getData = async () => {
 };
 
 const Blog = () =>{
-
     const [posts, setPosts] = useState([]);
     useEffect(() => {
         const fetchData = async () => {

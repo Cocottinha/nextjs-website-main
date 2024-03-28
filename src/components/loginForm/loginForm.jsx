@@ -11,7 +11,6 @@ const LoginForm = ( ) =>{
 
     const router = useRouter()
 
-
     return(
         <form className={styles.form} action={formAction}>
                     <input type="text" placeholder="username" name="username" />

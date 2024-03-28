@@ -5,7 +5,6 @@ import { useState } from "react"
 import ComboBox from "../comboBoxTecnicas/comboBoxTecnicas"
 
 const ListPontos = ({ data, slug }) => {
-
     const [selectedPonto, setSelectedPonto] = useState(null)
     const [isTecnicaListVisible, setIsTechniquesListVisible] = useState(false)
     const [filteredPosts, setFilteredPosts] = useState([]);
@@ -19,8 +18,7 @@ const ListPontos = ({ data, slug }) => {
             if (window) {
                 window.style.display = "block";
             }
-        }, 0);
-        
+        }, 0);   
     };
 
     const handleFilteredPostsChange = (filteredPosts) => {
@@ -93,7 +91,6 @@ const ListPontos = ({ data, slug }) => {
                         </div>
                     </div>
                 )}
-
             </div>
         </div>
     )
