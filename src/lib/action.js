@@ -5,7 +5,6 @@ import { Post,User } from "./models"
 import { signIn, signOut } from "./auth"
 import bcrypt from "bcryptjs"
 
-
 export const addUser = async(prevState, formData)=>{
     const {username, email,password, img} = Object.fromEntries(formData)
 

@@ -32,7 +32,7 @@ const Links = ({ session }) => {
     <div className={styles.container}>
       <div className={styles.links} ref={linksRef}>
         {links.map((link) => (
-          <NavLink item={link} key={link.title} />
+          <NavLink item={link} key={link.title}/>
         ))}
         {session?.user ? (
           <>
@@ -47,13 +47,24 @@ const Links = ({ session }) => {
           <NavLink item={{ title: "Login", path: "/login" }} />
         )}
       </div>
-      <button className={styles.btnMenu} onClick={() => setOpen((prev) => !prev)}>
-        <Image src="/burger-menu-svgrepo-com.svg" width={40} height={40} priority={true} alt="menu"/>
+      <button
+        className={`${styles.btnMenu} ${open ? styles.rotate : ""}`}
+        onClick={() => setOpen((prev) => !prev)}
+      >
+        <Image
+          src="/burger-menu-svgrepo-com.svg"
+          width={40}
+          height={40}
+          priority={true}
+          alt="menu"
+        />
       </button>
-      <div className={`${styles.mobileLinks} ${open ? styles.open : ""}`}>
+      <div 
+        className={`${styles.mobileLinks} ${open ? styles.open : ""}`}
+      >
         {open &&
           links.map((link) => (
-            <NavLink item={link} key={link.title} />
+            <NavLink item={link} key={link.title}/>
           ))}
         {session?.user ? (
           <>

@@ -1,7 +1,7 @@
 .links{
     display: flex;
     align-items: center;
-    gap: 	10px;
+    gap:10px;
 }
 .logout{
     padding: 10px;
@@ -15,8 +15,16 @@
     background-color: #e04141;
     color: white;
 }
-.btnMenu,.mobileLinks{
+.mobileLinks {
     display: none;
+    transition: 0.5s;
+}
+.btnMenu{
+    display: none;
+}
+.rotate img{
+    transition: 0.5s;
+    transform: rotate(90deg);
 }
 @media (max-width:1024px){
     .links{
@@ -30,9 +38,8 @@
         width: 40px;
         height: 40px;
         border: none;
-        padding: 0;
-        transition: 1.5s;
-        background: white;
+        padding: 0;        
+        background: white;        
     }
     .mobileLinks{
         position:absolute;
@@ -51,8 +58,8 @@
         transition:1.5s;
         z-index: 10;
     }
-    .mobileLinks.open{
+    .open{
         display: flex;
-        transition: 1.5s;
+        transition: 0.5s;
     }
 }
