@@ -10,16 +10,16 @@ const AdminUserForm = () =>{
             <h1>
                 Add New User
             </h1>
-            <input type="text"name="username" placeholder="username" />
-            <input type="email"name="email" placeholder="email" />
-            <input type="password" name="password" placeholder="password" />
-            <input type="text"name="img" placeholder="img" />
+            <input type="text"name="username" placeholder="Nome de Usuário" />
+            <input type="email"name="email" placeholder="E-mail" />
+            <input type="password" name="password" placeholder="Senha" />
+            <input type="text"name="img" placeholder="Imagem" />
             <select name="isAdmin">
-                <option value="false">isAdmin?</option>
-                <option value="false">NO</option>
-                <option value="true">YES</option>
+                <option value="false">É Admin?</option>
+                <option value="false">Não</option>
+                <option value="true">Sim</option>
             </select>
-            <button>Add</button>
+            <button>Adicionar</button>
             {state && state.error}
         </form>
     )

@@ -4,7 +4,6 @@ import Image from "next/image";
 import { deleteUser } from "@/lib/action";
 
 const AdminUsers = async() =>{
-
     const users = await getUsers();
 
     return(
@@ -18,7 +17,7 @@ const AdminUsers = async() =>{
                     </div>
                     <form action={deleteUser}>
                         <input type="hidden" name="id" value={user.id}/>
-                        <button className={styles.userButton}>Delete</button>
+                        <button className={styles.userButton}>Apagar</button>
                     </form>
                 </div>
             ))}

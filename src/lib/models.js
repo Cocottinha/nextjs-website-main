@@ -31,7 +31,7 @@ const userSchema = new mongoose.Schema({
 )
 
 const postSchema = new mongoose.Schema({
-    title:{
+    NomeImagem:{
         type:String,
         required:true,
     },

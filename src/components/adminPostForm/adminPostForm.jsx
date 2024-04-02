@@ -11,11 +11,10 @@ const AdminPostsForm = ({userId}) =>{
                 Add New Post
             </h1>
             <input type="hidden"name="userId" value={userId}/>
-            <input type="text"name="title" placeholder="Title" />
-            <textarea type="text"name="desc" placeholder="desc" rows={10}/>
-            <input type="text"name="slug" placeholder="slug" />
-            <input type="text"name="img" placeholder="img" />
-            <button>Add</button>
+            <input type="text"name="NomeImagem" placeholder="Nome da Imagem" />
+            <textarea type="text"name="desc" placeholder="Descrição" rows={10}/>
+            <input type="text"name="img" placeholder="Imagem" />
+            <button>Adicionar</button>
             {state && state.error}
         </form>
     )
