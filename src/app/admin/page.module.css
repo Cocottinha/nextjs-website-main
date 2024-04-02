@@ -1,5 +1,25 @@
-.container{
-
-}
-.rows{}
-.columns{}
+.container {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+  }
+  
+  .row {
+    display: flex;
+    gap: 100px;
+  }
+  
+  .row h1{
+    font-size: 24px;
+    font-weight: 1000;
+  }
+  
+  .columns {
+    flex: 1;
+  }
+  
+  .columns  img {
+    object-fit: cover;
+    border-radius: 50%;
+  }
