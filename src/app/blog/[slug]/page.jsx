@@ -1,19 +1,18 @@
 import Image from "next/image"
 import styles from "./page.module.css"
 import PostUser from "@/components/postUser/postUser"
-import { Suspense} from "react"
-import {getPost} from "@/lib/data"
+import {Suspense} from "react"
 import ListPontos from "@/components/listPontos/listPontos"
-import Loading from "@/app/loading"
 import PontoAnalise from "@/components/pontoAnalise/pontoAnalise"
 
 const getData = async (slug) => {
     const res = await fetch(`http://localhost:3000/api/blog/${slug}`,{next:{revalidate:3600}});
 
-    if(!res.ok){
+    if(!res.ok)
         throw new Error ("Wrong")
-    }
+    
     return res.json();
+    
 };
 
 const SinglePostPage = async ({ params }) => {
@@ -30,7 +29,7 @@ const SinglePostPage = async ({ params }) => {
                 ))}                           
             </div>}
             <div className={styles.textContainer}>
-                <h1 className={styles.title}>{post.title}</h1>
+                <h1 className={styles.title}>{post.NomeImagem}</h1>
                 <div className={styles.detail}>
                     {post && 
                     (<Suspense fallback={<div>Loading...</div>}>
@@ -43,7 +42,7 @@ const SinglePostPage = async ({ params }) => {
                     </div>
                 </div>
                 <div className={styles.row}>
-                    <ListPontos data={post} slug={post.slug}/>
+                    <ListPontos data={post} slug={post._id}/>
                 </div>
             </div>
         </div>

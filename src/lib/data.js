@@ -15,7 +15,7 @@ export const getPosts = async () => {
 export const getPost = async (slug) =>{
     try {
         connectToDB();
-        const post = await Post.findOne({slug})
+        const post = await Post.findById(slug)
         return post
     } catch (error) {
         console.log(error)

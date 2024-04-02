@@ -29,7 +29,7 @@ export default function ComboBox({ posts, setSortedPosts }) {
         sortByDateAscending()
         break;
       case '4':
-        setSortedPosts([...posts].sort((a, b) => a.title.localeCompare(b.title)));
+        setSortedPosts([...posts].sort((a, b) => a.NomeImagem.localeCompare(b.title)));
         break;
       default:
         break;

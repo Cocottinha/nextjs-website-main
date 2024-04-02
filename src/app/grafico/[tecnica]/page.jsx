@@ -10,7 +10,7 @@ import { Suspense } from "react";
 import Loading from "@/app/loading";
 import { readTextFileXRF } from "@/components/charts/getDataXRF";
 
-const Grafico = async ( { params } ) => {
+const Grafico = async ({params}) => {
   const tecnica = params.tecnica.split('-');
 
   //XRF-------------------------------------------------------------
