@@ -15,16 +15,16 @@ const RegisterForm = () =>{
         state?.sucess && router.push("/login")
     },[state?.success, router])
 
-    return(
+    return (
         <form className={styles.form} action={formAction}>
-                    <input type="text" placeholder="username" name="username" />
-                    <input type="email" placeholder="email" name="email" />
-                    <input type="password" placeholder="password" name="password" />
-                    <input type="password" placeholder="password again" name="passwordRepeat" />
-                    <button>Register</button>
-                    {state?.error}
-                    <Link href={"/login"}>Have an account?<b>Login</b></Link>
-                </form>
+            <input type="text" placeholder="username" name="username" />
+            <input type="email" placeholder="email" name="email" />
+            <input type="password" placeholder="password" name="password" />
+            <input type="password" placeholder="password again" name="passwordRepeat" />
+            <button>Register</button>
+            {state?.error}
+            <Link href={"/login"}>Have an account?<b>Login</b></Link>
+        </form>
     )
 }
 

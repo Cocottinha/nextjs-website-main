@@ -4,31 +4,42 @@ import { connectToDB } from "./connectToDB";
 import bcrypt from "bcryptjs"
 import { User } from "./models";
 import { authConfig } from "./auth.config";
+import mongoose from "mongoose";
 
 const login = async (credentials) => {
     try {
-        try {
-            connectToDB()
-            const user = await User.findOne({username: credentials.username})
+        connectToDB()
+        const user = await User.findOne({ username: credentials.username })
 
-            if(!user){
-                throw new Error("Wrong cred!")
-            }
-
-            const isPasswordCorrect = await bcrypt.compare(credentials.password, user.password)
-
-            if(!isPasswordCorrect){
-                throw new Error("Wrong cred!")
-            }
-
-            return user
-
-        } catch (error) {
-            console.log(error)
-            throw new Error ("Failed to login!")
+        if (!user) {
+            throw new Error("Usuário não existe!")
         }
+
+        const isPasswordCorrect = await bcrypt.compare(credentials.password, user.password)
+
+        if (!isPasswordCorrect) {
+            throw new Error("Senha Errada!")
+        }
+
+        const blocked = user.isBlocked;
+
+        if (blocked) {
+            throw new Error("Usuário Bloqueado!")
+        }
+
+        return user
+
     } catch (error) {
-        return null
+        if (error instanceof mongoose.Error || error.name === 'MongoError') {
+            console.error("MongoDB error:", error.message);
+            throw new Error("Erro de banco de dados");
+        } else if (error instanceof bcrypt.BcryptError) {
+            console.error("Bcrypt error:", error.message);
+            throw new Error("Erro ao verificar senha");
+        } else {
+            console.error("Erro desconhecido:", error.message);
+            throw new Error("Falha ao fazer login");
+        }
     }
 }
 
