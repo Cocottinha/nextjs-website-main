@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const Home = () => { 
+const Home = () => {
   return <div className={styles.container}>
     <div className={styles.textbox}>
       <h1 className={styles.title}>Nº1 do Brasil!</h1>

@@ -1,5 +1,4 @@
 "use client"
-
 import { login } from "@/lib/action"
 import styles from "./loginForm.module.css"
 import {useFormState} from "react-dom"
@@ -17,6 +16,7 @@ const LoginForm = ( ) =>{
                     <input type="password" placeholder="password" name="password" />
                     <button>Login</button>
                     {state?.error}
+                    <Link href={"/forgot-password"}>Forgot Password?</Link>
                     <Link href={"/register"}>Don't have an account?<b> Register</b></Link>
                 </form>
     )

@@ -26,6 +26,7 @@ export const addUser = async(prevState, formData)=>{
     }
  }
 
+
 export const addPost = async(prevState, formData)=>{
     const {title, desc, slug, userId} = Object.fromEntries(formData)
 
@@ -123,6 +124,27 @@ export const register = async (previousState, formData)=>{
         return{error: "Something wrong"}
     }
 }
+
+export const changePassword = async(prevState, formData)=>{
+
+    const {email, password} = Object.fromEntries(formData)
+    try{
+        connectToDB();  
+        const salt = await bcrypt.genSalt(10)
+        const hashedPassword = await bcrypt.hash(password, salt)
+        await User.findOneAndUpdate({email: email}, {password: hashedPassword});
+        console.log("Senha Atualizada!")
+        revalidatePath("/blog")
+        revalidatePath("/admin")
+    }
+    catch(error){
+        console.log(error)
+        return{
+            error:"Não foi possível alterar a senha!"
+        }
+    }
+}
+
 export const login = async (prevState, formData)=>{
     const {username, password} = Object.fromEntries(formData)
 

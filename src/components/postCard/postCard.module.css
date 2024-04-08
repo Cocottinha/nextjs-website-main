@@ -11,12 +11,12 @@
 .top{
     display: flex;
     background-color: rgb(244 244 245);
+    transition: 0.5s;
 }
 .imgCont{
     width: 90%;
     height: 300px;
     position: relative;
-
 }
 .img{
     object-fit: cover;
