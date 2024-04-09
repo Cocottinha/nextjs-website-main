@@ -115,7 +115,7 @@ export const register = async (previousState, formData)=>{
             img,
         })
         await newUser.save()
-        console.log("saved to db")
+        console.log("Conta criada com sucesso!")
 
         return {success:true}
     }
@@ -125,31 +125,38 @@ export const register = async (previousState, formData)=>{
     }
 }
 
-export const changePassword = async(prevState, formData)=>{
-
-    const {email, password} = Object.fromEntries(formData)
-    try{
-        connectToDB();  
-        const salt = await bcrypt.genSalt(10)
-        const hashedPassword = await bcrypt.hash(password, salt)
-        await User.findOneAndUpdate({email: email}, {password: hashedPassword});
-        console.log("Senha Atualizada!")
-        revalidatePath("/blog")
-        revalidatePath("/admin")
-    }
-    catch(error){
-        console.log(error)
-        return{
-            error:"Não foi possível alterar a senha!"
+export const changePassword = async (email, password) => {
+    const user = await User.findOne({email:email});
+    if(user){
+        try {
+            connectToDB();
+            const salt = await bcrypt.genSalt(10);
+            const hashedPassword = await bcrypt.hash(password, salt);
+    
+            await User.findOneAndUpdate({ email: email }, { password: hashedPassword, lastPasswordChange: Date.now()} );
+    
+            console.log("Senha Atualizada!");
+    
+            revalidatePath("/blog");
+            revalidatePath("/admin");
+    
+        } catch(error) {
+            console.log(error);
+            return {
+                error: "Não foi possível alterar a senha!"
+            };
         }
     }
-}
+    else{
+        throw new Error("Não existe usuário com esse email!")
+    }
+};
 
 export const login = async (prevState, formData)=>{
     const {username, password} = Object.fromEntries(formData)
 
     try{
-        await signIn("credentials", { username, password })
+        await signIn("credentials", { username, password})
     }
     catch(err){
         console.log("Error on login: \n" + err)

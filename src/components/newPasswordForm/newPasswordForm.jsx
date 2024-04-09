@@ -1,60 +1,56 @@
 "use client"
-import { useFormState } from "react-dom"
-import { useRouter } from "next/navigation"
-import { changePassword } from "@/lib/action"
-import styles from "./newPasswordForm.module.css"
+//import { useRouter } from "next/router";
+import { changePassword } from "@/lib/action";
+import styles from "./newPasswordForm.module.css";
 import { useState } from "react";
 
 const NewPassword = () => {
-  const [state, formAction] = useFormState(changePassword, undefined)
-  const [password, setPassword] = useState('');
-  const [newPassword, setNewPassword] = useState('');
-  const [error, setError] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState(null);
 
-  const router = useRouter()
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if (newPassword !== password) {
-      console.log(newPassword,"//", password)
-      setError('As senhas não coincidem!');
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    if (password !== confirmPassword) {
+      setError("As senhas não coincidem");
       return;
     }
 
-    setPassword('');
-    setNewPassword('');
-    setError('');
+    try {
+      await changePassword(email, password);
+    } catch (err) {
+      setError(err.message);
+    }
   };
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit} action={formAction}>
+    <form className={styles.form} onSubmit={handleSubmit}>
       <input
         type="email"
-        placeholder="email"
-        name="email"
+        placeholder="Email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
         required
       />
       <input
         type="password"
-        placeholder="new password"
-        name="password"
+        placeholder="Nova senha"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         required
       />
       <input
         type="password"
-        placeholder="confirm password"
-        name="newPassword"
-        value={newPassword}
-        onChange={(e) => setNewPassword(e.target.value)}
+        placeholder="Confirmar nova senha"
+        value={confirmPassword}
+        onChange={(e) => setConfirmPassword(e.target.value)}
         required
       />
       <button type="submit">Mudar Senha</button>
-      {error && <div>{error}</div>}
-      {state?.error}
+      {error && <p>{error}</p>}
     </form>
-  )
-}
-export default NewPassword
+  );
+};
+
+export default NewPassword;

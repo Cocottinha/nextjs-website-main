@@ -26,7 +26,8 @@ const login = async (credentials) => {
         if (blocked) {
             throw new Error("Usuário Bloqueado!")
         }
-
+        
+        await User.findOneAndUpdate({username: credentials.username},{lastLogin: Date.now()})
         return user
 
     } catch (error) {
