@@ -100,11 +100,14 @@ const Grafico = async ({params}) => {
       })
     });
     if (objetoAnalise != null) {
-      const file = objetoAnalise.diretorio
+      let file;
+      objetoAnalise.imagensEObjetivas.map(i => {
+        file = i.diretorio
+      })
       return (
         <div className={styles.container}>
           <h1>{objetoAnalise.nomeDaTecnica}</h1>
-          <Image src={file}/>
+          <Image src={file} fill/>
           <ParamsMO objeto={objetoAnalise}/>
         </div>
       );

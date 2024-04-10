@@ -3,6 +3,7 @@ import styles from "./listTecnicas.module.css"
 import Link from "next/link"
 
 const ListTecnicas = ({data, isTecnicaListVisible, selectedOption, selectedPonto, slug}) =>{
+  console.log(slug);
   return(
     <div>
       {isTecnicaListVisible && (

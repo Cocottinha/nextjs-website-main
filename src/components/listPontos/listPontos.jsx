@@ -1,15 +1,15 @@
 "use client"
 
+import ListTecnicas from "../listTecnicas/listTecnicas"
 import styles from "./listPontos.module.css"
 import { useState } from "react"
-import ComboBox from "../comboBoxTecnicas/comboBoxTecnicas"
-import ListTecnicas from "../listTecnicas/listTecnicas"
 
-const ListPontos = ({ data, slug }) => {
+const ListPontos = ({ filteredPosts, data, selectedOption, slug }) => {
+  const post = data;
+  const selected = selectedOption;
+  const slugr = slug;
   const [selectedPonto, setSelectedPonto] = useState(null)
   const [isTecnicaListVisible, setIsTechniquesListVisible] = useState(false)
-  const [filteredPosts, setFilteredPosts] = useState([]);
-  const [selectedOption, setSelectedOption] = useState('Todas');
 
   const handlePontoClick = (pontoId) => {
     setSelectedPonto(pontoId);
@@ -22,18 +22,8 @@ const ListPontos = ({ data, slug }) => {
     }, 0);
   };
 
-  const handleFilteredPostsChange = (filteredPosts) => {
-    setFilteredPosts(filteredPosts);
-    setIsTechniquesListVisible(false);
-  };
-
-  const handleSelectChange = (selectedOption) => {
-    setSelectedOption(selectedOption);
-  };
-
   return (
     <div className={styles.container}>
-      <ComboBox pontos={data.Pontos} setSortedPosts={handleFilteredPostsChange} onSelectChange={handleSelectChange} />
       <div className={styles.caixa}>
         <div className={styles.row}>
           <h2>Pontos:</h2>
@@ -66,11 +56,10 @@ const ListPontos = ({ data, slug }) => {
             </ul>
           </div>
         </div>
-        <div>
-          <ListTecnicas data={data} isTecnicaListVisible={isTecnicaListVisible} selectedOption={selectedOption} selectedPonto={selectedPonto} slug={slug}/>
-        </div>
+        <ListTecnicas data={post} isTecnicaListVisible={isTecnicaListVisible} selectedOption={selected} slug={slugr} selectedPonto={selectedPonto} />
       </div>
     </div>
+
   )
 }
-export default ListPontos
+export default ListPontos;

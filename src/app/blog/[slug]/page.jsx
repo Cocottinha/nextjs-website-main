@@ -4,6 +4,7 @@ import PostUser from "@/components/postUser/postUser"
 import {Suspense} from "react"
 import ListPontos from "@/components/listPontos/listPontos"
 import PontoAnalise from "@/components/pontoAnalise/pontoAnalise"
+import ListPontosETecnicas from "@/components/listPontos&Tecnicas/listPontos&Tecnicas"
 
 const getData = async (slug) => {
     const res = await fetch(`http://localhost:3000/api/blog/${slug}`,{next:{revalidate:3600}});
@@ -42,7 +43,7 @@ const SinglePostPage = async ({ params }) => {
                     </div>
                 </div>
                 <div className={styles.row}>
-                    <ListPontos data={post} slug={post._id}/>
+                    <ListPontosETecnicas data={post} slug={post._id}/>
                 </div>
             </div>
         </div>
