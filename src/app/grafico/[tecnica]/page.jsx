@@ -29,6 +29,7 @@ const Grafico = async ({params}) => {
     });
     if (objetoAnalise != null) {
       const file = objetoAnalise.diretorio
+      console.log(file)
       if(file.length === 0){
         <div className={styles.container}>
           <h1>Gráfico não encontrado</h1>
@@ -36,6 +37,7 @@ const Grafico = async ({params}) => {
       }
       else{
         const { arrayA, arrayB } = await readTextFileXRF(file);
+        console.log(arrayB)
         return (
           <div className={styles.container}>
             <h1>{objetoAnalise.nomeDaTecnica}</h1>
@@ -70,6 +72,7 @@ const Grafico = async ({params}) => {
     });
     if (objetoAnalise != null) {
       const file = objetoAnalise.diretorio
+      console.log(file)
       const { arrayA, arrayB } = await readTextFileFTIR(file);
       return (
         <div className={styles.container}>

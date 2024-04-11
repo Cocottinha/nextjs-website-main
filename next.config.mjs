@@ -5,8 +5,9 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: "images.pexels.com",
-      }
-    ]
+      },
+    ],
+    domains:['localhost:3000']
   }
 };
 
