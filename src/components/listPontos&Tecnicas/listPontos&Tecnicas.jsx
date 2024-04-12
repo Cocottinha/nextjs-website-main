@@ -6,15 +6,14 @@ import ComboBox from "../comboBoxTecnicas/comboBoxTecnicas"
 import ListPontos from "../listPontos/listPontos"
 
 const ListPontosETecnicas = ({ data, slug }) => {
-  const dados = data;
   const slugr = slug;
-  //const [isTecnicaListVisible, setIsTechniquesListVisible] = useState(false)
+  const [isTecnicaListVisible, setIsTechniquesListVisible] = useState(false)
   const [filteredPosts, setFilteredPosts] = useState([]);
   const [selectedOption, setSelectedOption] = useState('Todas');
 
   const handleFilteredPostsChange = (filteredPosts) => {
     setFilteredPosts(filteredPosts);
-    //setIsTechniquesListVisible(false);
+    setIsTechniquesListVisible(false);
   };
 
   const handleSelectChange = (selectedOption) => {
