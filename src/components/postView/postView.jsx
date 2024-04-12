@@ -56,27 +56,17 @@ const PostView = ({ post }) => {
             <span className={styles.detailValue}>{post.createdAt.toString().slice(0, 10)}</span>
           </div>
         </div>
-        <div className={styles.cont}>
+        <div className={styles.contTop}>
           <ComboBox pontos={post.Pontos} setSortedPosts={handleFilteredPostsChange} onSelectChange={handleSelectChange} />
-          {/* <ListPontosETecnicas data={post} slug={post._id}/> */}
-          <div className={styles.row}>
-            <h2>Pontos:</h2>
-            <div className={styles.column}>
-              <ul>
-                {filteredPosts.length > 0 ?
-                  (
-                    filteredPosts.map((ponto) => (
-                      <li
-                        key={ponto.IdPonto}
-                        onClick={() => handlePontoClick(ponto.IdPonto)}
-                        className={selectedPonto === ponto.IdPonto ? styles.selected : ""}
-                      >
-                        {ponto.Nome}
-                      </li>
-                    ))
-                  ) : (
-                    selectedOption === "Todas" ? (
-                      post.Pontos.map((ponto) => (
+          <div className={styles.cont}>
+            {/* <ListPontosETecnicas data={post} slug={post._id}/> */}
+            <div className={styles.row}>
+              <h2>Pontos:</h2>
+              <div className={styles.column}>
+                <ul>
+                  {filteredPosts.length > 0 ?
+                    (
+                      filteredPosts.map((ponto) => (
                         <li
                           key={ponto.IdPonto}
                           onClick={() => handlePontoClick(ponto.IdPonto)}
@@ -85,12 +75,24 @@ const PostView = ({ post }) => {
                           {ponto.Nome}
                         </li>
                       ))
-                    ) : null
-                  )}
-              </ul>
+                    ) : (
+                      selectedOption === "Todas" ? (
+                        post.Pontos.map((ponto) => (
+                          <li
+                            key={ponto.IdPonto}
+                            onClick={() => handlePontoClick(ponto.IdPonto)}
+                            className={selectedPonto === ponto.IdPonto ? styles.selected : ""}
+                          >
+                            {ponto.Nome}
+                          </li>
+                        ))
+                      ) : null
+                    )}
+                </ul>
+              </div>
             </div>
           </div>
-          <div>
+          <div className={styles.cont}>
             {isTecnicaListVisible && (
               <div className={styles.row} id="hide" hidden>
                 <h2>Técnicas:</h2>
