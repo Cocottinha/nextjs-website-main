@@ -91,35 +91,34 @@ const PostView = ({ post }) => {
                 </ul>
               </div>
             </div>
-          </div>
-          <div className={styles.cont}>
             {isTecnicaListVisible && (
-              <div className={styles.row} id="hide" hidden>
-                <h2>Técnicas:</h2>
-                <div className={styles.column}>
-                  <ul>
-                    {selectedPonto &&
-                      post.Pontos.find((ponto) => ponto.IdPonto === selectedPonto).AnaliseTecnica.map(
-                        (tecnica, index) => (
-                          tecnica.nomeDaTecnica.startsWith(selectedOption) || selectedOption === 'Todas' ? (
-                            <Link
-                              target="blank_"
-                              href={{
-                                pathname: "/grafico/" + post._id + "-" + tecnica.nomeDaTecnica,
-                              }}
-                              key={index}
-                            >
-                              <li>{tecnica.nomeDaTecnica}</li>
-                            </Link>
-                          ) : null
-                        )
+            <div className={styles.row} id="hide" hidden>
+              <h2>Técnicas:</h2>
+              <div className={styles.column}>
+                <ul>
+                  {selectedPonto &&
+                    post.Pontos.find((ponto) => ponto.IdPonto === selectedPonto).AnaliseTecnica.map(
+                      (tecnica, index) => (
+                        tecnica.nomeDaTecnica.startsWith(selectedOption) || selectedOption === 'Todas' ? (
+                          <Link
+                            target="blank_"
+                            href={{
+                              pathname: "/grafico/" + post._id + "-" + tecnica.nomeDaTecnica,
+                            }}
+                            key={index}
+                          >
+                            <li>{tecnica.nomeDaTecnica}</li>
+                          </Link>
+                        ) : null
                       )
-                    }
-                  </ul>
-                </div>
+                    )
+                  }
+                </ul>
               </div>
-            )}
+            </div>
+          )}
           </div>
+          
         </div>
       </div>
     </div>
