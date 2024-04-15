@@ -37,7 +37,7 @@ p {
 }
 
 body {
-  background-color: var(--bg);
+  background: white;
   color: var(--text);
 }
 

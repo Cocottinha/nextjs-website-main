@@ -2,7 +2,7 @@
 import { useState } from "react";
 import styles from "./comboBoxTecnicas.module.css";
 
-export default function ComboBox({ pontos, setSortedPosts, onSelectChange }) {
+export default function ComboBoxTecnicas({ pontos, setSortedPosts, onSelectChange }) {
     
     const [selectedOption, setSelectedOption] = useState('Todas');
 

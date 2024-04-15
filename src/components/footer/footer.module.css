@@ -1,22 +1,25 @@
-.container{
-    display: flex;
-    justify-content: space-between;
-    height: 100px;
-    align-items: center;
-    color: #070bff;
+.container {
+  display: flex;
+  justify-content: space-between;
+  height: 100px;
+  align-items: center;
+  background-color: white;
 }
-.logo{
-    font-weight: bold;
+
+.logo {
+  float: left;
+  padding: 4px;
+  font-size: 18px;
+  font-weight: 500;
+  background: -webkit-linear-gradient(360deg, var(--labcolor), rgba(0, 212, 255, 1));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
-.logo i{
-    float: left;
-    padding: 4px;
-    font-size: 10px;
-      font-weight: 500;
-      background: -webkit-linear-gradient(360deg,var(--labcolor), rgba(0,212,255,1));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-.text{
-    font-size: 12px;
+
+.text {
+  font-size: 12px;
+  font-weight: 500;
+  background: -webkit-linear-gradient(360deg, var(--labcolor), rgba(0, 212, 255, 1));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }

@@ -10,7 +10,7 @@ import { Suspense } from "react";
 import Loading from "@/app/loading";
 import { readTextFileXRF } from "@/components/charts/getDataXRF";
 
-const Grafico = async ({params}) => {
+const Grafico = async ({ params }) => {
   const tecnica = params.tecnica.split('-');
 
   //XRF-------------------------------------------------------------
@@ -20,8 +20,7 @@ const Grafico = async ({params}) => {
     var objetoAnalise;
     Pontos.forEach(ponto => {
       ponto.AnaliseTecnica.forEach(analise => {
-        if (analise.nomeDaTecnica == tecnica[1])
-        {
+        if (analise.nomeDaTecnica == tecnica[1]) {
           objetoAnalise = analise
           return
         }
@@ -30,12 +29,12 @@ const Grafico = async ({params}) => {
     if (objetoAnalise != null) {
       const file = objetoAnalise.diretorio
       console.log(file)
-      if(file.length === 0){
+      if (file.length === 0) {
         <div className={styles.container}>
           <h1>Gráfico não encontrado</h1>
         </div>
       }
-      else{
+      else {
         const { arrayA, arrayB } = await readTextFileXRF(file);
         console.log(arrayB)
         return (
@@ -48,7 +47,7 @@ const Grafico = async ({params}) => {
           </div>
         );
       }
-      
+
     }
     return (
       <div className={styles.container}>
@@ -56,15 +55,14 @@ const Grafico = async ({params}) => {
       </div>
     )
 
-  //FTIR-------------------------------------------------------------
+    //FTIR-------------------------------------------------------------
   } else if (tecnica[1].startsWith("FTIR")) {
     const post = await getPost(tecnica[0]);
     const { Pontos } = JSON.parse(JSON.stringify(post));
     var objetoAnalise;
     Pontos.forEach(ponto => {
       ponto.AnaliseTecnica.forEach(analise => {
-        if (analise.nomeDaTecnica == tecnica[1])
-        {
+        if (analise.nomeDaTecnica == tecnica[1]) {
           objetoAnalise = analise
           return
         }
@@ -77,26 +75,25 @@ const Grafico = async ({params}) => {
       return (
         <div className={styles.container}>
           <h1>{objetoAnalise.nomeDaTecnica}</h1>
-          <PlotComponent x={arrayA} y={arrayB}/>
-          <ParamsFTIR objeto={objetoAnalise}/>
+          <PlotComponent x={arrayA} y={arrayB} />
+          <ParamsFTIR objeto={objetoAnalise} />
         </div>
       );
     }
-    return(
+    return (
       <div className={styles.container}>
         <h1>Gráfico não encontrado</h1>
       </div>
     )
 
-  //MO-------------------------------------------------------------
-  }else if (tecnica[1].startsWith("MO")) {
+    //MO-------------------------------------------------------------
+  } else if (tecnica[1].startsWith("MO")) {
     const post = await getPost(tecnica[0]);
     const { Pontos } = JSON.parse(JSON.stringify(post));
     var objetoAnalise;
     Pontos.forEach(ponto => {
       ponto.AnaliseTecnica.forEach(analise => {
-        if (analise.nomeDaTecnica == tecnica[1])
-        {
+        if (analise.nomeDaTecnica == tecnica[1]) {
           objetoAnalise = analise
           return
         }
@@ -110,12 +107,16 @@ const Grafico = async ({params}) => {
       return (
         <div className={styles.container}>
           <h1>{objetoAnalise.nomeDaTecnica}</h1>
-          <Image src={file} fill/>
-          <ParamsMO objeto={objetoAnalise}/>
+          <div className={styles.twoPanels}>
+            <div className={styles.contImg}>
+              <Image className={styles.img} src={file} fill />
+            </div>
+            <ParamsMO objeto={objetoAnalise} />
+          </div>
         </div>
       );
     }
-    return(
+    return (
       <div className={styles.container}>
         <h1>Gráfico não encontrado</h1>
       </div>

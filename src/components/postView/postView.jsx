@@ -1,11 +1,11 @@
 "use client"
 import Image from "next/image"
 import PontoAnalise from "../pontoAnalise/pontoAnalise"
-import ListPontosETecnicas from "../listPontos&Tecnicas/listPontos&Tecnicas"
 import styles from "./postView.module.css"
 import { useState } from "react"
 import ComboBox from "../comboBox/comboBox"
 import Link from "next/link"
+import ComboBoxTecnicas from "../comboBoxTecnicas/comboBoxTecnicas"
 
 const PostView = ({ post }) => {
 
@@ -57,7 +57,7 @@ const PostView = ({ post }) => {
           </div>
         </div>
         <div className={styles.contTop}>
-          <ComboBox pontos={post.Pontos} setSortedPosts={handleFilteredPostsChange} onSelectChange={handleSelectChange} />
+          <ComboBoxTecnicas pontos={post.Pontos} setSortedPosts={handleFilteredPostsChange} onSelectChange={handleSelectChange} />
           <div className={styles.cont}>
             {/* <ListPontosETecnicas data={post} slug={post._id}/> */}
             <div className={styles.row}>
@@ -92,33 +92,32 @@ const PostView = ({ post }) => {
               </div>
             </div>
             {isTecnicaListVisible && (
-            <div className={styles.row} id="hide" hidden>
-              <h2>Técnicas:</h2>
-              <div className={styles.column}>
-                <ul>
-                  {selectedPonto &&
-                    post.Pontos.find((ponto) => ponto.IdPonto === selectedPonto).AnaliseTecnica.map(
-                      (tecnica, index) => (
-                        tecnica.nomeDaTecnica.startsWith(selectedOption) || selectedOption === 'Todas' ? (
-                          <Link
-                            target="blank_"
-                            href={{
-                              pathname: "/grafico/" + post._id + "-" + tecnica.nomeDaTecnica,
-                            }}
-                            key={index}
-                          >
-                            <li>{tecnica.nomeDaTecnica}</li>
-                          </Link>
-                        ) : null
+              <div className={styles.row} id="hide" hidden>
+                <h2>Técnicas:</h2>
+                <div className={styles.column}>
+                  <ul>
+                    {selectedPonto &&
+                      post.Pontos.find((ponto) => ponto.IdPonto === selectedPonto).AnaliseTecnica.map(
+                        (tecnica, index) => (
+                          tecnica.nomeDaTecnica.startsWith(selectedOption) || selectedOption === 'Todas' ? (
+                            <Link
+                              target="blank_"
+                              href={{
+                                pathname: "/grafico/" + post._id + "-" + tecnica.nomeDaTecnica,
+                              }}
+                              key={index}
+                            >
+                              <li>{tecnica.nomeDaTecnica}</li>
+                            </Link>
+                          ) : null
+                        )
                       )
-                    )
-                  }
-                </ul>
+                    }
+                  </ul>
+                </div>
               </div>
-            </div>
-          )}
+            )}
           </div>
-          
         </div>
       </div>
     </div>
