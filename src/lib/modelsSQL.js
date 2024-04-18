@@ -7,8 +7,8 @@ const sequelize = new Sequelize('teste', 'teste', '12345',
 })
 export const User = sequelize.define('users',
 {
-    id_user:{type:Int16Array, autoIncrement:true, primaryKey:true, allowNull:false},
-    username:{type:Int16Array, allowNull:false},
+    id_user:{type:Int32Array, autoIncrement:true, primaryKey:true, allowNull:false},
+    username:{type:String, allowNull:false},
     email:{type:String, allowNull:false},
     password:{type:String, allowNull:false},
     isAdmin:{type:Boolean, defaultValue:false},
