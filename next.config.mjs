@@ -7,7 +7,6 @@ const nextConfig = {
         hostname: "images.pexels.com",
       },
     ],
-    domains:['localhost:3000']
   }
 };
 

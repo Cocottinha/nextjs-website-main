@@ -3,6 +3,7 @@ import {Post, User} from "./models"
 
 export const getPosts = async () => {
     try {
+        
         connectToDB()
         const posts = await Post.find()
         return posts
