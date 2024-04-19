@@ -3,6 +3,7 @@ import { revalidatePath } from "next/cache"
 import {User} from "./modelsSQL"
 import { signIn, signOut } from "./auth"
 import bcrypt from "bcryptjs"
+import { Connection } from "./connection"
 
 // export const addUser = async (prevState, formData) => {
 //   const { username, email, password, img } = Object.fromEntries(formData)
@@ -86,42 +87,46 @@ export const handleLogout = async () => {
   "use server"
   await signOut()
 }
-// export const register = async (previousState, formData) => {
-//   const { username, email, password, passwordRepeat, img } = Object.fromEntries(formData)
 
-//   if (password !== passwordRepeat) { return { error: "Password does not match!" } }
-//   try {
-//     connectToDB()
 
-//     const user = await User.findOne({ username })
-//     const mail = await User.findOne({ email })
+export const register = async (previousState, formData) => {
+  const { username, email, password, passwordRepeat,img } = Object.fromEntries(formData)
 
-//     if (user) {
-//       return { error: "Username already exists!" }
-//     }
-//     if (mail) {
-//       return { error: "Email already exists!" }
-//     }
+  if (password !== passwordRepeat) { return { error: "Password does not match!" } }
+  try {
+    Connection();
 
-//     const salt = await bcrypt.genSalt(10)
-//     const hashedPassword = await bcrypt.hash(password, salt)
+    const user = await User.findOne({ where:{username: username }})
+    const mail = await User.findOne({ where:{email: email } })
 
-//     const newUser = new User({
-//       username,
-//       email,
-//       password: hashedPassword,
-//       img,
-//     })
-//     await newUser.save()
-//     console.log("Conta criada com sucesso!")
+    console.log(user)
 
-//     return { success: true }
-//   }
-//   catch (err) {
-//     console.log(err)
-//     return { error: "Something wrong" }
-//   }
-// }
+    if (user) {
+      return { error: "Username already exists!" }
+    }
+    if (mail) {
+      return { error: "Email already exists!" }
+    }
+
+    const salt = await bcrypt.genSalt(10)
+    const hashedPassword = await bcrypt.hash(password, salt)
+
+    const newUser = User.build({
+      username,
+      email,
+      password: hashedPassword,
+      img,
+    })
+    await newUser.save()
+    console.log("Conta criada com sucesso!")
+
+    return { success: true, error:"Conta criada com sucesso!" }
+  }
+  catch (err) {
+    console.log(err)
+    return { error: "Something wrong" }
+  }
+}
 
 export const changePassword = async (email, password) => {
   try {

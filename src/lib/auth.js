@@ -7,13 +7,12 @@ import { User } from "./modelsSQL";
 
 const login = async (credentials) => {
     try {
-        Connection();
         const user = await User.findOne({ 
             where:{
                 username:credentials.username
             }
         })
-
+        
         if (!user) {
             throw new Error("Usuário não existe!")
         }
