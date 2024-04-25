@@ -1,4 +1,5 @@
 import PostView from "@/components/postView/postView"
+import styles from "./page.module.css"
 
 const getData = async (slug) => {
     const res = await fetch(`http://localhost:3000/api/blog/${slug}`,{next:{revalidate:3600}});
@@ -14,7 +15,7 @@ const SinglePostPage = async ({ params }) => {
     const post = await getData(slug);
 
     return (
-        <div>
+        <div className={styles.container}>
             <PostView post={post}/>
         </div>
     )

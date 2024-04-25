@@ -19,4 +19,5 @@ export const User = sequelize.define('users',
 {
     timestamps:false
 });
+
 console.log("Connected To DB!");

@@ -2,7 +2,6 @@ import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials"
 import bcrypt from "bcryptjs"
 import { authConfig } from "./auth.config";
-import { Connection } from "./connection";
 import { User } from "./modelsSQL";
 
 const login = async (credentials) => {
@@ -37,6 +36,7 @@ const login = async (credentials) => {
         )
         }    
         return user
+        
     }
     catch (err) {
         throw new Error(err)

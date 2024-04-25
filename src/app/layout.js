@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
   title: { default: "Lab.Data", template: "%s | Lab.Data" },
-  description: 'Your website of Art Data and Spectrometry!',
+  description: 'O site de análises forenses do Brasil!',
 }
 
 export default function RootLayout({ children }) {

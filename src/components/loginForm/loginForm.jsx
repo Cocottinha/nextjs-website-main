@@ -17,7 +17,6 @@ const LoginForm = () => {
       <button>Login</button>
       {state?.error}
       <Link href={"/forgot-password"}>Forgot Password?</Link>
-      {/* <Link href={"/register"}>Don't have an account?<b> Register</b></Link> */}
     </form>
   )
 }

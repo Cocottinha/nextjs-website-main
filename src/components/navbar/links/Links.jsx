@@ -7,19 +7,19 @@ import { handleLogout } from "@/lib/action";
 
 const links = [
   {
-    title: "Home",
+    title: "Início",
     path: "/",
   },
   {
-    title: "About",
+    title: "Sobre",
     path: "/about",
   },
   {
-    title: "Contact",
+    title: "Contato",
     path: "/contact",
   },
   {
-    title: "Posts",
+    title: "Postagens",
     path: "/blog",
   },
 ];
@@ -40,11 +40,11 @@ const Links = ({ session }) => {
               <NavLink item={{ title: "Admin", path: "/admin" }} />
             )}
             <form action={handleLogout}>
-              <button className={styles.logout}>Logout</button>
+              <button className={styles.logout}>Sair</button>
             </form>
           </>
         ) : (
-          <NavLink item={{ title: "Login", path: "/login" }} />
+          <NavLink item={{ title: "Entrar", path: "/login" }} />
         )}
       </div>
       <button
@@ -72,11 +72,11 @@ const Links = ({ session }) => {
               <NavLink item={{ title: "Admin", path: "/admin" }} />
             )}
             <form action={handleLogout}>
-              <button className={styles.logout}>Logout</button>
+              <button className={styles.logout}>Sair</button>
             </form>
           </>
         ) : (
-          <NavLink item={{ title: "Login", path: "/login" }} />
+          <NavLink item={{ title: "Entrar", path: "/login" }} />
         )}
       </div>
     </div>
