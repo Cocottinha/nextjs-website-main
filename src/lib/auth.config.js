@@ -6,6 +6,7 @@ export const authConfig = {
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
+        console.log(user)
         token.id = user.id
         token.isAdmin = user.isAdmin
       }
@@ -35,7 +36,7 @@ export const authConfig = {
         return false
       }
       if (isOnLoginPage && user) {
-        return Response.redirect(new URL("/", request.nextUrl));
+        return Response.redirect(new URL("/", request.nextUrl));        
       }
       return true
     },

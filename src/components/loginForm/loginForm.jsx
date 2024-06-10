@@ -6,13 +6,14 @@ import { useRouter } from "next/navigation"
 import Link from "next/link"
 
 const LoginForm = () => {
+
   const [state, formAction] = useFormState(login, undefined)
 
   const router = useRouter()
 
   return (
     <form className={styles.form} action={formAction}>
-      <input type="text" placeholder="username" name="username" />
+      <input type="text" placeholder="email" name="email" />
       <input type="password" placeholder="password" name="password" />
       <button>Login</button>
       {state?.error}

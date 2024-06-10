@@ -10,7 +10,6 @@ export const handleLogout = async () => {
   await signOut()
 }
 
-
 export const register = async (previousState, formData) => {
   const { username, email, password, passwordRepeat,img } = Object.fromEntries(formData)
 
@@ -78,10 +77,10 @@ export const changePassword = async (email, password) => {
 };
 
 export const login = async (prevState, formData) => {
-  const { username, password } = Object.fromEntries(formData)
+  const { email, password } = Object.fromEntries(formData)
 
   try {
-    await signIn("credentials", { username, password })
+    await signIn("credentials", { email, password })
   }
   catch (err) {
     console.log("Error on login: \n" + err)

@@ -1,45 +1,36 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials"
-import bcrypt from "bcryptjs"
 import { authConfig } from "./auth.config";
-import { User } from "./modelsSQL";
+import { cookies } from "next/headers";
 
-const login = async (credentials) => {
+export const login = async (credentials) => {
     try {
-        const user = await User.findOne({ 
-            where:{
-                username:credentials.username
-            }
+        const response = await fetch("http://192.168.0.11:8000/api/login", {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+              },
+            method: "POST",
+            body: JSON.stringify({
+                email: credentials.email,
+                password: credentials.password
+            })
         })
-        
-        if (!user) {
-            throw new Error("Usuário não existe!")
+
+        const data = await response.json()
+
+        if (data.Dados.token) {         
+            cookies().set("access-token",data.Dados.token)
+            console.log(data.Dados.token)
+            return { token: data.Dados.token };
         }
-        const isPasswordCorrect = await bcrypt.compare(credentials.password, user.password)
-
-        if (!isPasswordCorrect) {
-            throw new Error("Senha Errada!")
+        else {
+            throw new Error('Token not found in the response');
         }
-
-        const blocked = user.isBlocked;
-
-        if (blocked) {
-            throw new Error("Usuário Bloqueado!")
-        }
-
-        if(user){
-            await User.update({ 
-                lastLogin: new Date()
-            },{
-                where:{username:credentials.username}
-            }
-        )
-        }    
-        return user
         
     }
-    catch (err) {
-        throw new Error(err)
+    catch (error) {
+        throw new Error(error.message || 'Login failed');
     }
 }
 
@@ -52,16 +43,31 @@ export const {
         ...authConfig,
         providers: [
             CredentialsProvider({
+                name: 'Credentials',
+                credentials: {
+                    email: { label: "Email", type: "text" },
+                    password: { label: "Password", type: "password" }
+                },
                 async authorize(credentials) {
-                    return await login(credentials)
+                    const user = await login(credentials);
+                    if (user) {
+                        return user;
+                    } else {
+                        return null;
+                    }
                 }
             })
         ],
         callbacks: {
-            async signIn({ user, account, profile }) {
-                console.log(user, account, profile)
-                return true
+            async jwt({ token, user }) {
+                if (user) {
+                    token.authToken = user.token;
+                }
+                return token;
             },
-            ...authConfig.callbacks,
+            async session({ session, token }) {
+                session.authToken = token.authToken;
+                return session;
+            }
         }
     });
