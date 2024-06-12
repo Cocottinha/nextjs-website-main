@@ -1,22 +1,15 @@
 "use client"
 import { login } from "@/lib/action"
 import styles from "./loginForm.module.css"
-import { useFormState } from "react-dom"
-import { useRouter } from "next/navigation"
 import Link from "next/link"
 
 const LoginForm = () => {
 
-  const [state, formAction] = useFormState(login, undefined)
-
-  const router = useRouter()
-
   return (
-    <form className={styles.form} action={formAction}>
+    <form className={styles.form} action={login}>
       <input type="text" placeholder="email" name="email" />
       <input type="password" placeholder="password" name="password" />
       <button>Login</button>
-      {state?.error}
       <Link href={"/forgot-password"}>Forgot Password?</Link>
     </form>
   )
