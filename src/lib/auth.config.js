@@ -43,22 +43,13 @@ export const authConfig = {
         password: { label: "Password", type: "password" }
       },
       async authorize(credentials) {
-        const user = await login(credentials);
-        if (user) {
-          return user;
-        }
-        return false
+        return await login(credentials);
       }
     })
   ],
   callbacks: {
-    async signIn({ user }) {
-      const isAllowed = user != null
-      if (isAllowed) {
-        return true
-      } else {
-        return false
-      }
+    async signIn({ user, account, profile }) {
+      return true
     },
     async jwt({ token, user }) {
       if (user) {
@@ -66,7 +57,7 @@ export const authConfig = {
       }
       return token;
     },
-    async session({ session, token}) {
+    async session({ session, token }) {
       session.authToken = token.authToken;
       return session;
     },
@@ -91,7 +82,7 @@ export const authConfig = {
       }
       if (isOnLoginPage && user) {
         console.log("#4")
-        var url = new URL('/', request.url)
+        var url = new URL('/', request.nextUrl)
         console.log("Nova URL: " + url)
         return Response.redirect(url)
       }

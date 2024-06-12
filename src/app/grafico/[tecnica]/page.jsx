@@ -1,7 +1,7 @@
 import PlotComponent from "@/components/charts/chart";
 import { readTextFileFTIR } from "@/components/charts/getDataFTIR";
 import styles from './grafico.module.css';
-import { getPost } from "@/lib/data";
+// import { getPost } from "@/lib/data";
 import ParamsXRF from "@/components/params/paramsXRF";
 import ParamsFTIR from "@/components/params/paramsFTIR";
 import Image from "next/image";
