@@ -18,7 +18,9 @@ const login = async (credentials) => {
 
     const data = await response.json()
 
-    if (data.Dados.token) {
+    console.log(data)
+
+    if (data.Sucesso) {
       cookies().set("access-token", data.Dados.token)
       return { token: data.Dados.token };
     }
@@ -82,6 +84,7 @@ export const authConfig = {
       }
       if (isOnLoginPage && user) {
         console.log("#4")
+
         var url = new URL('/', request.nextUrl)
         console.log("Nova URL: " + url)
         return Response.redirect(url)

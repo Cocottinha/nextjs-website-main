@@ -1,24 +1,21 @@
 "use server"
+import { redirect } from "next/dist/server/api-utils"
 import { signIn, signOut } from "./auth"
 
 export const handleLogout = async () => {
   await signOut({redirectTo: "/"})
 }
 
-export const login = async (formData) => {
-  const email = formData.get('email')
-  const password = formData.get('password')
+export const login = async (prevState, formData) => {
+  const { email, password } = Object.fromEntries(formData);
 
   try {
-    const formData = {email, password}
-    const url = await signIn("credentials", formData)
-    // return NextResponse.redirect(new URL("http://localhost:3000/"))
-    // return redirect('/')
-    // const { next } = router.query;
-    // await router.push(next || '/');
+    const url = await signIn("credentials", {email,password} )
+    if(url){
+      redirect(url)
+    }
   }
   catch (err) {
-    console.log(err)
     if (err.message.includes("CredentialsSignin")) {
       return { error: "Username or Password invalid!" }
     }
