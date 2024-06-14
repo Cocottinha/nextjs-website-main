@@ -1,14 +1,10 @@
 "use client"
 import { NextResponse } from 'next/server';
-import { cookies } from 'next/headers';
-import { getToken } from './app/api/logout/logout';
 
 export async function middleware(req,res) {
   const url = req.nextUrl.clone();
 
-
   let cookie = req.cookies.get("access-token")
-  console.log(cookie)
 
   const session = cookie
 
