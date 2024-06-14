@@ -1,9 +1,16 @@
 "use client"
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import styles from "./links.module.css";
 import NavLink from "./navLink/navLink";
 import Image from "next/image";
-import { handleLogout } from "@/lib/action";
+
+export const handleLogout = async () => {
+  await fetch(`${window.location.origin}/api/logout`, {
+    method: 'POST',
+  });
+  localStorage.clear()
+  window.location.href = '/';
+};
 
 const links = [
   {
@@ -27,19 +34,21 @@ const links = [
 const Links = ({ session }) => {
   const [open, setOpen] = useState(false);
   const linksRef = useRef(null);
+
+  console.log(session)
   return (
     <div className={styles.container}>
       <div className={styles.links} ref={linksRef}>
         {links.map((link) => (
           <NavLink item={link} key={link.title}/>
         ))}
-        {session?.user? (
+        {session? (
           <>
             {session.user?.isAdmin && (
               <NavLink item={{ title: "Admin", path: "/admin" }} />
             )}
             <form action={handleLogout}>
-              <button className={styles.logout}>Sair</button>
+              <button className={styles.logout} onClick={handleLogout}>Sair</button>
             </form>
           </>
         ) : (
@@ -65,13 +74,13 @@ const Links = ({ session }) => {
           links.map((link) => (
             <NavLink item={link} key={link.title}/>
           ))}
-        {session?.user ? (
+        {session? (
           <>
             {session.user?.isAdmin && (
               <NavLink item={{ title: "Admin", path: "/admin" }} />
             )}
             <form action={handleLogout}>
-              <button className={styles.logout}>Sair</button>
+              <button className={styles.logout} onClick={handleLogout}>Sair</button>
             </form>
           </>
         ) : (

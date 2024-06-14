@@ -1,23 +1,32 @@
 "use server"
-import { redirect } from "next/dist/server/api-utils"
-import { signIn, signOut } from "./auth"
+import { cookies } from "next/headers";
 
-export const handleLogout = async () => {
-  await signOut({redirectTo: "/"})
-}
-
-export const login = async (prevState, formData) => {
-  const { email, password } = Object.fromEntries(formData);
-
+export const login = async (email, password) => {
   try {
-    const url = await signIn("credentials", {email,password} )
-    if(url){
-      redirect(url)
+    const response = await fetch(process.env.APILOGIN, {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      cache:'no-cache',
+      method: "POST",
+      body: JSON.stringify({
+        email,
+        password
+      })
+    })
+
+    const data = await response.json()
+
+    if (data.Sucesso) {
+      cookies().set("access-token", data.Dados.token)
+      return { token: data.Dados.token };
+    }
+    else {
+      throw new Error('Token not found in the response');
     }
   }
-  catch (err) {
-    if (err.message.includes("CredentialsSignin")) {
-      return { error: "Username or Password invalid!" }
-    }
+  catch (error) {
+    throw new Error(error.message || 'Login failed');
   }
 }
