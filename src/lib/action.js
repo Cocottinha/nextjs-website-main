@@ -30,3 +30,6 @@ export const login = async (email, password) => {
     throw new Error(error.message || 'Login failed');
   }
 }
+export async function deleteCookies (){
+  cookies().delete("access-token")
+}

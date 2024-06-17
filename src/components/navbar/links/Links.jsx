@@ -3,12 +3,14 @@ import { useState, useRef } from "react";
 import styles from "./links.module.css";
 import NavLink from "./navLink/navLink";
 import Image from "next/image";
+import { deleteCookies } from "@/lib/action";
 
 export const handleLogout = async () => {
   await fetch(`${window.location.origin}/api/logout`, {
     method: 'POST',
   });
   localStorage.clear()
+  deleteCookies()
   window.location.href = '/';
 };
 
@@ -34,8 +36,7 @@ const links = [
 const Links = ({ session }) => {
   const [open, setOpen] = useState(false);
   const linksRef = useRef(null);
-
-  console.log(session)
+  
   return (
     <div className={styles.container}>
       <div className={styles.links} ref={linksRef}>
