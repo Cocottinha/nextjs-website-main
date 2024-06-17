@@ -1,7 +1,7 @@
 import PlotComponent from "@/components/charts/chart";
 import { readTextFileFTIR } from "@/components/charts/getDataFTIR";
 import styles from './grafico.module.css';
-import { getPost } from "@/lib/data";
+// import { getPost } from "@/lib/data";
 import ParamsXRF from "@/components/params/paramsXRF";
 import ParamsFTIR from "@/components/params/paramsFTIR";
 import Image from "next/image";
@@ -28,7 +28,6 @@ const Grafico = async ({ params }) => {
     });
     if (objetoAnalise != null) {
       const file = objetoAnalise.diretorio
-      console.log(file)
       if (file.length === 0) {
         <div className={styles.container}>
           <h1>Gráfico não encontrado</h1>
@@ -36,7 +35,6 @@ const Grafico = async ({ params }) => {
       }
       else {
         const { arrayA, arrayB } = await readTextFileXRF(file);
-        console.log(arrayB)
         return (
           <div className={styles.container}>
             <h1>{objetoAnalise.nomeDaTecnica}</h1>

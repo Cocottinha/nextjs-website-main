@@ -1,6 +1,4 @@
 "use client"
-//import { useRouter } from "next/router";
-import { changePassword } from "@/lib/action";
 import styles from "./newPasswordForm.module.css";
 import { useState } from "react";
 

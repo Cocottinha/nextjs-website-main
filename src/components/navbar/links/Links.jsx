@@ -1,25 +1,34 @@
 "use client"
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import styles from "./links.module.css";
 import NavLink from "./navLink/navLink";
 import Image from "next/image";
-import { handleLogout } from "@/lib/action";
+import { deleteCookies } from "@/lib/action";
+
+export const handleLogout = async () => {
+  await fetch(`${window.location.origin}/api/logout`, {
+    method: 'POST',
+  });
+  localStorage.clear()
+  deleteCookies()
+  window.location.href = '/';
+};
 
 const links = [
   {
-    title: "Home",
+    title: "Início",
     path: "/",
   },
   {
-    title: "About",
+    title: "Sobre",
     path: "/about",
   },
   {
-    title: "Contact",
+    title: "Contato",
     path: "/contact",
   },
   {
-    title: "Posts",
+    title: "Postagens",
     path: "/blog",
   },
 ];
@@ -27,24 +36,24 @@ const links = [
 const Links = ({ session }) => {
   const [open, setOpen] = useState(false);
   const linksRef = useRef(null);
-
+  
   return (
     <div className={styles.container}>
       <div className={styles.links} ref={linksRef}>
         {links.map((link) => (
           <NavLink item={link} key={link.title}/>
         ))}
-        {session?.user ? (
+        {session? (
           <>
             {session.user?.isAdmin && (
               <NavLink item={{ title: "Admin", path: "/admin" }} />
             )}
             <form action={handleLogout}>
-              <button className={styles.logout}>Logout</button>
+              <button className={styles.logout} onClick={handleLogout}>Sair</button>
             </form>
           </>
         ) : (
-          <NavLink item={{ title: "Login", path: "/login" }} />
+          <NavLink item={{ title: "Entrar", path: "/login" }} />
         )}
       </div>
       <button
@@ -66,17 +75,17 @@ const Links = ({ session }) => {
           links.map((link) => (
             <NavLink item={link} key={link.title}/>
           ))}
-        {session?.user ? (
+        {session? (
           <>
             {session.user?.isAdmin && (
               <NavLink item={{ title: "Admin", path: "/admin" }} />
             )}
             <form action={handleLogout}>
-              <button className={styles.logout}>Logout</button>
+              <button className={styles.logout} onClick={handleLogout}>Sair</button>
             </form>
           </>
         ) : (
-          <NavLink item={{ title: "Login", path: "/login" }} />
+          <NavLink item={{ title: "Entrar", path: "/login" }} />
         )}
       </div>
     </div>

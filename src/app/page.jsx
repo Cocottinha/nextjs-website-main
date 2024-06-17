@@ -12,8 +12,8 @@ const Home = () => {
         A Equipe do Laboratório Móvel se mostra influente e uma potência na área das análises físico-químicas de obras de arte!
       </p>
       <div className={styles.buttons}>
-        <Link href={"/about"} target="_blank"><button className={styles.button}>Learn More</button></Link>
-        <Link href={"/contact"} target="_blank"><button className={styles.button}>Contact</button></Link>
+        <Link href={"/about"} target="_blank"><button className={styles.button}>Saiba Mais</button></Link>
+        <Link href={"/contact"} target="_blank"><button className={styles.button}>Contato</button></Link>
       </div>
       <h4>
           Orgãos de Fomento/Parceiros:
