@@ -11,17 +11,12 @@ export async function middleware(req,res) {
   const isOnAdminPanel = url.pathname.startsWith("/admin");
   const isOnBlogPage = url.pathname.startsWith("/blog");
   const isOnLoginPage = url.pathname.startsWith("/login");
-  const isOnRegisterPage = url.pathname.startsWith("/register");
 
   if (isOnAdminPanel && (!session || !session.isAdmin)) {
     return NextResponse.redirect(new URL('/login', req.url));
   }
 
   if (isOnBlogPage && !session) {
-    return NextResponse.redirect(new URL('/login', req.url));
-  }
-
-  if (isOnRegisterPage && (!session || !session.isAdmin)) {
     return NextResponse.redirect(new URL('/login', req.url));
   }
 
