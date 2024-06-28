@@ -5,6 +5,7 @@ import bcrypt from "bcryptjs"
 import { User } from "./models";
 import { authConfig } from "./auth.config";
 import mongoose from "mongoose";
+import { cookies } from "next/headers";
 
 const login = async (credentials) => {
     try {
@@ -28,7 +29,10 @@ const login = async (credentials) => {
         }
         
         await User.findOneAndUpdate({username: credentials.username},{lastLogin: Date.now()})
+        console.log(user._id)
+        cookies().set('user',user._id)
         return user
+        
 
     } catch (error) {
         if (error instanceof mongoose.Error || error.name === 'MongoError') {

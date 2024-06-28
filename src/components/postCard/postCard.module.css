@@ -4,6 +4,8 @@
     gap: 20px;
     margin-bottom: 20px;
     transition: transform 0.3s;
+    border: 0.5px solid black    ;
+    padding: 10px;
 }
 .container:hover{
     transform: scale(1.05);
@@ -22,8 +24,7 @@
     object-fit: cover;
 }
 .date{
-    font-size: 14px;
-    transform: rotate(270deg);
+    font-size: 14px;   
     margin: auto;
     width: 95px;
     text-align: center;

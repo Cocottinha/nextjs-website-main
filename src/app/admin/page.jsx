@@ -16,9 +16,9 @@ const Admin = async() => {
                         <AdminPosts/>
                     </Suspense>
                 </div>
-                {/* <div className={styles.columns}>
+                <div className={styles.columns}>
                     <AdminPostsForm userId={session.user.id}/>
-                </div> */}
+                </div>
             </div>
             <div className={styles.row}>
                 <div className={styles.columns}>
@@ -26,9 +26,9 @@ const Admin = async() => {
                         <AdminUsers/>
                     </Suspense>
                 </div>
-                {/* <div className={styles.columns}>
+                <div className={styles.columns}>
                     <AdminUserForm/>
-                </div> */}
+                </div>
             </div>
         </div>
     )

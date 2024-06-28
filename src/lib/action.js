@@ -4,6 +4,7 @@ import { connectToDB } from "./connectToDB"
 import { Post, User } from "./models"
 import { signIn, signOut } from "./auth"
 import bcrypt from "bcryptjs"
+import { cookies } from "next/headers"
 
 export const addUser = async (prevState, formData) => {
   const { username, email, password, img } = Object.fromEntries(formData)
@@ -28,15 +29,12 @@ export const addUser = async (prevState, formData) => {
 
 
 export const addPost = async (prevState, formData) => {
-  const { title, desc, slug, userId } = Object.fromEntries(formData)
+  const { dimensao, atividade, descricao, horas, userId, slug } = Object.fromEntries(formData)
 
   try {
     connectToDB();
     const newPost = new Post({
-      title,
-      desc,
-      slug,
-      userId
+      dimensao, atividade, descricao, horas, userId, slug:Date.now(), pendente:true
     })
     await newPost.save()
     console.log("Saved to DB")
@@ -49,7 +47,6 @@ export const addPost = async (prevState, formData) => {
     }
   }
 }
-
 export const deletePost = async (formData) => {
   const { id } = Object.fromEntries(formData)
 
@@ -155,6 +152,7 @@ export const changePassword = async (email, password) => {
 export const login = async (prevState, formData) => {
   const { username, password } = Object.fromEntries(formData)
 
+  console.log(username, password)
   try {
     await signIn("credentials", { username, password })
   }
@@ -165,4 +163,8 @@ export const login = async (prevState, formData) => {
     }
     throw err
   }
+}
+export const getCookieId = async()  => {
+  const a = cookies().get("user")
+  return a.value
 }

@@ -32,6 +32,16 @@ export const getUser = async (id) => {
         throw new Error("Failed user")
     }
 }
+export const getUserName = async (id) => {
+    try {
+
+        const user = await User.findById(id)
+        return user.email
+    } catch (error) {
+        console.log(error)
+        throw new Error("Failed user")
+    }
+}
 export const getUsers = async () => {
     try {
         connectToDB();

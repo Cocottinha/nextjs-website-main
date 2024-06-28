@@ -41,20 +41,32 @@ const userSchema = new mongoose.Schema({
 )
 
 const postSchema = new mongoose.Schema({
-    NomeImagem:{
+    dimensao:{
+        type:String,
+        required:true
+    },
+    atividade:{
         type:String,
         required:true,
     },
-    desc:{
+    descricao:{
         type:String,
         required:true,
     },
-    img:{
-        type:String,
+    horas:{
+        type:Number,
     },
     userId:{
         type:String,
         required:false
+    },
+    aprovado:{
+        type:Boolean,
+        default:null
+    }, 
+    pendente:{
+        type:Boolean,
+        default:null
     },
     slug:{
         type:String,
