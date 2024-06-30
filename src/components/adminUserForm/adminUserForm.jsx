@@ -13,7 +13,6 @@ const AdminUserForm = () =>{
             <input type="text"name="username" placeholder="Nome de Usuário" />
             <input type="email"name="email" placeholder="E-mail" />
             <input type="password" name="password" placeholder="Senha" />
-            <input type="text"name="img" placeholder="Imagem" />
             <select name="isAdmin">
                 <option value="false">É Admin?</option>
                 <option value="false">Não</option>

@@ -32,7 +32,11 @@ const PostView = ({ post }) => {
             <span className={styles.detailValue}>{post.createdAt.toString().slice(0, 10)}</span>
           </div>
         </div>
-        <div className={styles.contTop}></div>
+        <div className={styles.contTop}>
+          <div className={styles.text}>Atividade: {post.atividade}</div>
+          <div className={styles.text}>Horas: {post.horas}</div>
+          <div className={styles.text}>Descrição: {post.descricao}</div>
+        </div>
       </div>
     </div>
   );

@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import styles from "@/components/postUser/postUser.module.css";
 import Image from "next/image";
-import { getUserName } from "@/lib/data";
 
 const PostUser = ({ userId, username }) => {
   return (

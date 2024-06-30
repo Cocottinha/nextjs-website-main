@@ -1,5 +1,6 @@
-import { getPosts, getUser, getUserName } from "@/lib/data"
+import { getPosts, getUserName } from "@/lib/data"
 import styles from "./adminPosts.module.css"
+import Link from "next/link";
 
 const AdminPosts = async () => {
     const posts = await getPosts(); 
@@ -12,7 +13,9 @@ const AdminPosts = async () => {
                         <span className={styles.postTitle}>{getUserName(post.userId)} -- {post.id}</span>
                     </div>
                     <form>
-                        <button className={styles.postButton}>Abrir Hora</button>
+                        <Link className={styles.link} href={`/blog/${post.id}`}>
+                            <button className={styles.postButton}>Abrir</button>
+                        </Link>
                     </form>
                 </div>
             ))}
