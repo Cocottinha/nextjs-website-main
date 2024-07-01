@@ -11,16 +11,50 @@
     align-items: center;
     gap: 20px;
   }
-  
+  .groupButton{
+    display: flex;
+    flex-direction: row;
+  }
   .postButton{
     padding: 5px 10px;
-    background-color: rgba(232, 114, 114, 0.872);
+    background-color: rgba(98, 98, 98, 0.872);
     color: white;
     border-radius: 5px;
     border: none;
     cursor: pointer;
     transition: 0.5s;
+    margin-left: 2px;
+  }
+  .approved{
+    padding: 5px 10px;
+    background-color: rgba(31, 103, 6, 0.872);
+    color: white;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: 0.5s;
+    margin-left: 2px;
+  }
+  .reproved{
+    padding: 5px 10px;
+    background-color: rgba(233, 24, 24, 0.872);
+    color: white;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: 0.5s;
+    margin-left: 2px;
+  }
+  .pending{
+    padding: 5px 10px;
+    background-color: rgba(233, 226, 24, 0.872);
+    color: white;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: 0.5s;
+    margin-left: 2px;
   }
   .postButton:hover{
-    background-color: rgba(255, 0, 0, 0.872);
+    background-color: rgba(0, 13, 252, 0.872);
   }

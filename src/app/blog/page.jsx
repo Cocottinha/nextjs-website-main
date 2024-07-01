@@ -4,6 +4,7 @@ import styles from "@/app/blog/blog.module.css"
 import { useEffect, useState } from "react";
 import { getUser } from "@/lib/data";
 import { getCookieId } from "@/lib/action";
+import Link from "next/link";
 
 const getData = async () => {
   const res = await fetch("/api/blog", { next: { revalidate: 3600 } });
@@ -35,7 +36,11 @@ const Blog = () => {
 
   return (
     <div className={styles.containerG}>
-      <div>Adicionar Hora Complementar</div>
+      <form>
+        <Link>
+          <button className={styles.button}>Adicionar Hora</button>
+        </Link>      
+      </form>      
       <div className={styles.container}>
         {posts
           .filter(post => post.userId === userLoggedId)
