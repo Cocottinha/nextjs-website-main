@@ -16,6 +16,15 @@ const AdminPosts = async () => {
                         <Link className={styles.link} href={`/blog/${post.id}`}>
                             <button className={styles.postButton}>Abrir</button>
                         </Link>
+                        {post.pendente &&( 
+                            <>
+                            {post.aprovado ? (
+                                <button className={styles.postButton}>Aprovado</button>
+                            ) : (
+                                <button className={styles.postButton}>Reprovado</button>
+                            )}
+                        </> 
+                        )}                                                                  
                     </form>
                 </div>
             ))}

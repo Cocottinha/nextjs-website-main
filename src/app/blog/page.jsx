@@ -35,6 +35,7 @@ const Blog = () => {
 
   return (
     <div className={styles.containerG}>
+      <div>Adicionar Hora Complementar</div>
       <div className={styles.container}>
         {posts
           .filter(post => post.userId === userLoggedId)
