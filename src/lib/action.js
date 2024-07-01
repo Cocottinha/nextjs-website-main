@@ -5,6 +5,7 @@ import { Post, User } from "./models"
 import { signIn, signOut } from "./auth"
 import bcrypt from "bcryptjs"
 import { cookies } from "next/headers"
+import { redirect } from "next/navigation"
 
 export const addUser = async (prevState, formData) => {
   const { username, email, password, img } = Object.fromEntries(formData)
@@ -28,9 +29,7 @@ export const addUser = async (prevState, formData) => {
 }
 
 
-export const addPost = async (prevState, formData) => {
-  const { dimensao, atividade, descricao, horas, userId, slug } = Object.fromEntries(formData)
-
+export const addPost = async (dimensao, atividade, descricao, horas, userId, slug) => {
   try {
     connectToDB();
     const newPost = new Post({
@@ -40,6 +39,9 @@ export const addPost = async (prevState, formData) => {
     console.log("Saved to DB")
     revalidatePath("/blog")
     revalidatePath("/admin")
+    return{
+      message:"Adicionado com sucesso!"
+    }
   } catch (error) {
     console.log(error)
     return {
@@ -149,9 +151,7 @@ export const changePassword = async (email, password) => {
   }
 };
 
-export const login = async (prevState, formData) => {
-  const { username, password } = Object.fromEntries(formData)
-
+export const login = async (username, password) => {
   console.log(username, password)
   try {
     await signIn("credentials", { username, password })
