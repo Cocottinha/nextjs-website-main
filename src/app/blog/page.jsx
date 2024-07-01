@@ -37,7 +37,7 @@ const Blog = () => {
   return (
     <div className={styles.containerG}>
       <form>
-        <Link>
+        <Link href={"/addHour"}>
           <button className={styles.button}>Adicionar Hora</button>
         </Link>      
       </form>      

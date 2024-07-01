@@ -19,6 +19,11 @@
     border-radius: 5px;
     margin-bottom: 20px;
     border:none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.button:hover{
+    background-color: gray;
 }
 .combox{
     text-align: right;
