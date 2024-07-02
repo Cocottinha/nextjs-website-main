@@ -17,6 +17,7 @@ const LoginForm = () => {
 
     try {
       const result = await login(email, password);
+      console.log(result)
       if (result.token) {
         localStorage.setItem('auth-token', result.token); // Sinaliza que o token foi atualizado
         window.location.href = '/'; // Redirecionar após login bem-sucedido

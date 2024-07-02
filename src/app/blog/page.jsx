@@ -3,22 +3,15 @@ import PostCard from "@/components/postCard/postCard"
 import styles from "@/app/blog/blog.module.css"
 import ComboBox from "@/components/comboBox/comboBox";
 import { useEffect, useState } from "react";
-
-const getData = async () => {
-  const res = await fetch("/api/blog", { next: { revalidate: 3600 } });
-
-  if (!res.ok) {
-    throw new Error("Wrong")
-  }
-  return res.json();
-};
+import { getPosts } from "@/lib/action";
 
 const Blog = () => {
   const [posts, setPosts] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await getData();
+        const data = await getPosts();
+        console.log(data)
         setPosts(data);
       } catch (error) {
         console.error("Error fetching data:", error);
