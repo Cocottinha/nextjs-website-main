@@ -32,8 +32,6 @@ const login = async (credentials) => {
         console.log(user._id)
         cookies().set('user',user._id)
         return user
-        
-
     } catch (error) {
         if (error instanceof mongoose.Error || error.name === 'MongoError') {
             console.error("MongoDB error:", error.message);

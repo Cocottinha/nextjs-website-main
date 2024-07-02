@@ -66,6 +66,35 @@ export const deletePost = async (formData) => {
     }
   }
 }
+
+export const aprovar = async (id) => {
+  try {
+    connectToDB();
+    await Post.findByIdAndUpdate(id, {aprovado: true, pendente: false })
+    console.log("Atualizado!")
+    revalidatePath("/blog")
+    revalidatePath("/admin")
+
+  } catch (error) {
+    console.log(error)
+    return {
+      error: "Algo deu errado!"
+    }
+  }
+}
+export const reprovar = async (id) => {
+  try {
+    await connectToDB();
+    await Post.findByIdAndUpdate(id, { aprovado: false, pendente: false });
+    console.log("Post reprovado!");
+    revalidatePath("/blog");
+    revalidatePath("/admin");
+  } catch (error) {
+    console.log(error);
+    return { error: "Algo deu errado ao reprovar o post!" };
+  }
+};
+
 export const deleteUser = async (formData) => {
   const { id } = Object.fromEntries(formData)
 

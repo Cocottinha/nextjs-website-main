@@ -5,7 +5,7 @@ const PostCard = ({ post }) => {
   let statusMessage = "";
   if (post.aprovado) {
     statusMessage = "Aprovado";
-  } else if (post.reprovado) {
+  } else if (!post.aprovado && !post.pendente) {
     statusMessage = "Reprovado";
   } else {
     statusMessage = "Pendente";

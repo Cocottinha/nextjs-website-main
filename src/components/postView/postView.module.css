@@ -30,6 +30,35 @@
     flex-direction: column;
     gap: 10px;
 }
+.buttons{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-left: 0px;
+    width: 200px;
+}
+.accept{
+    background-color: rgb(38, 214, 6);
+    border-radius: 5px;
+    padding: 10px;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.reprove{
+    background-color: rgb(214, 6, 6);
+    border-radius: 5px;
+    padding: 10px;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.accept:hover{
+    background-color: gray;
+}
+.reprove:hover{
+    background-color: gray;
+}
 .detailTitle{
     color: gray;
     font-weight: bold;

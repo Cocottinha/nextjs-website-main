@@ -33,7 +33,7 @@ const PostView = ({ post }) => {
   return (
     <div className={styles.container}>
       <div className={styles.textContainer}>
-        <h1 className={styles.title}>{post._id}</h1>
+        <h1 className={styles.title}>Id Hora: {post._id}</h1>
         <div className={styles.detail}>
           <PostUser userId={post.userId} username={username} />
           <div className={styles.detailText}>
@@ -52,6 +52,7 @@ const PostView = ({ post }) => {
           <div className={styles.text}>Descrição: {post.descricao}</div>
         </div>
       </div>
+
     </div>
   );
 };

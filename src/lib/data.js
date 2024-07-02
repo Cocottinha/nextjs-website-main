@@ -34,7 +34,6 @@ export const getUser = async (id) => {
 }
 export const getUserName = async (id) => {
     try {
-
         const user = await User.findById(id)
         return user.email
     } catch (error) {
