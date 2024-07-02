@@ -5,7 +5,6 @@ import { Post, User } from "./models"
 import { signIn, signOut } from "./auth"
 import bcrypt from "bcryptjs"
 import { cookies } from "next/headers"
-import { redirect } from "next/navigation"
 
 export const addUser = async (prevState, formData) => {
   const { username, email, password, img } = Object.fromEntries(formData)
