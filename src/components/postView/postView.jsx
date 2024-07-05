@@ -8,7 +8,7 @@ import Link from "next/link"
 import ComboBoxTecnicas from "../comboBoxTecnicas/comboBoxTecnicas"
 
 const PostView = ({ post }) => {
-
+  console.log(post)
   const [isTecnicaListVisible, setIsTechniquesListVisible] = useState(false)
   const [filteredPosts, setFilteredPosts] = useState([]);
   const [selectedOption, setSelectedOption] = useState('Todas');
@@ -36,33 +36,28 @@ const PostView = ({ post }) => {
 
   return (
     <div className={styles.container}>
-      {post.img &&
+      {/* {post.img &&
         <div className={styles.imgContainer} id="imgContainer">
           <Image src={post.img} alt={post.desc} width={700} height={700} className={styles.img} priority={true} />
           {post.Pontos.map((ponto) => (
             <PontoAnalise key={ponto.IdPonto} IdPonto={ponto.IdPonto} X={ponto.X} Y={ponto.Y} largImg={post.X} altImg={post.Y} onClick={handlePontoClick} />
           ))}
-        </div>}
+        </div>} */}
       <div className={styles.textContainer}>
-        <h1 className={styles.title}>{post.NomeImagem}</h1>
+        <h1 className={styles.title}>{post.nome_imagem}</h1>
         <div className={styles.detail}>
-          {/* {post && 
-                    (<Suspense fallback={<div>Loading...</div>}>
-                        <PostUser userId = {post.userId}></PostUser>
-                    </Suspense>
-                    )} */}
           <div className={styles.detailText}>
             <span className={styles.detailTitle}>Data da Publicação</span>
-            <span className={styles.detailValue}>{post.createdAt.toString().slice(0, 10)}</span>
+            <span className={styles.detailValue}>{post.created_at.toString().slice(0, 10)}</span>
           </div>
         </div>
         <div className={styles.contTop}>
-          <ComboBoxTecnicas pontos={post.Pontos} setSortedPosts={handleFilteredPostsChange} onSelectChange={handleSelectChange} />
+          {/* <ComboBoxTecnicas pontos={post.Pontos} setSortedPosts={handleFilteredPostsChange} onSelectChange={handleSelectChange} /> */}
           <div className={styles.cont}>
             {/* <ListPontosETecnicas data={post} slug={post._id}/> */}
-            <div className={styles.row}>
-              <h2>Pontos:</h2>
-              <div className={styles.column}>
+            {/* <div className={styles.row}>
+              <h2>Pontos:</h2> */}
+              {/* <div className={styles.column}>
                 <ul>
                   {filteredPosts.length > 0 ?
                     (
@@ -116,7 +111,7 @@ const PostView = ({ post }) => {
                   </ul>
                 </div>
               </div>
-            )}
+            )} */}
           </div>
         </div>
       </div>

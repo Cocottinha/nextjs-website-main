@@ -32,6 +32,64 @@ export const login = async (email, password) => {
   }
 };
 
+export const register = async (name, email, password, c_password) => {
+  const requestData = {
+    name: name.toString(),
+    email: email.toString(),
+    password: password.toString(),
+    c_password: c_password.toString()   
+  };
+
+  console.log("back:",JSON.stringify(requestData))
+  try {
+    const response = await axios.post(process.env.APIREGISTER, requestData, {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json; charset=utf-8',
+      }
+    });
+
+    console.log("Response:", response.data)
+
+    if (!response.data.Sucesso) {
+      throw new Error('Token not found in the response');
+    }
+
+    return (response.data);
+  } catch (error) {
+    throw new Error(error.message + '| Create failed');
+  }
+};
+
+export const changePassword = async (email, password, c_password) => {
+  const requestData = {
+    name: name.toString(),
+    email: email.toString(),
+    password: password.toString(),
+    c_password: c_password.toString()   
+  };
+
+  console.log("back:",JSON.stringify(requestData))
+  try {
+    const response = await axios.post(process.env.APIREGISTER, requestData, {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json; charset=utf-8',
+      }
+    });
+
+    console.log("Response:", response.data)
+
+    if (!response.data.Sucesso) {
+      throw new Error('Token not found in the response');
+    }
+
+    return (response.data);
+  } catch (error) {
+    throw new Error(error.message + '| Create failed');
+  }
+};
+
 export const getPosts = async () => {
   const a = cookies().get("access-token")
   console.log(a.value)

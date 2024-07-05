@@ -12,6 +12,7 @@ const LoginForm = () => {
     event.preventDefault();
     setPending(true);
     setErrorMessage("");
+    
     const formData = new FormData(event.target);
     const { email, password } = Object.fromEntries(formData);
 

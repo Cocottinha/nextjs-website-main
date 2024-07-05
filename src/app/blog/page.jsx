@@ -11,8 +11,7 @@ const Blog = () => {
     const fetchData = async () => {
       try {
         const data = await getPosts();
-        console.log(data)
-        setPosts(data);
+        setPosts(data.Dados);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
