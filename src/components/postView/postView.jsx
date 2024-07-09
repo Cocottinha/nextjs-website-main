@@ -44,11 +44,11 @@ const PostView = ({ post }) => {
           ))}
         </div>} */}
       <div className={styles.textContainer}>
-        <h1 className={styles.title}>{post.nome_imagem}</h1>
+        <h1 className={styles.title}>{post.projeto.nome_imagem}</h1>
         <div className={styles.detail}>
           <div className={styles.detailText}>
             <span className={styles.detailTitle}>Data da Publicação</span>
-            <span className={styles.detailValue}>{post.created_at.toString().slice(0, 10)}</span>
+            <span className={styles.detailValue}>{post.projeto.createdAt.toString().slice(0, 10)}</span>
           </div>
         </div>
         <div className={styles.contTop}>

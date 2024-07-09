@@ -15,6 +15,7 @@ import { cookies } from "next/headers"
 const getData = async (slug) => {
   const a = cookies().get("access-token")
   console.log(a.value)
+  console.log(`${process.env.APIPOST}${slug}`)
   try {
     const response = await axios.get(`${process.env.APIPOST}${slug}`, {
       headers: {
@@ -44,7 +45,7 @@ const SinglePostPage = async ({ params }) => {
 
   return (
     <div className={styles.container}>
-      <PostView post={post.Dados} />
+      <PostView post={post} />
     </div>
   )
 }
