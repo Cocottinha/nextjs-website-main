@@ -1,7 +1,7 @@
 import PlotComponent from "@/components/charts/chart";
 import { readTextFileFTIR } from "@/components/charts/getDataFTIR";
 import styles from './grafico.module.css';
-// import { getPost } from "@/lib/data";
+import { getPost } from "@/lib/action";
 import ParamsXRF from "@/components/params/paramsXRF";
 import ParamsFTIR from "@/components/params/paramsFTIR";
 import Image from "next/image";
@@ -12,10 +12,11 @@ import { readTextFileXRF } from "@/components/charts/getDataXRF";
 
 const Grafico = async ({ params }) => {
   const tecnica = params.tecnica.split('-');
-
+  console.log(tecnica)
+  const post = await getPost(tecnica[0]);
+  console.log(post)
   //XRF-------------------------------------------------------------
-  if (tecnica[1].startsWith("XRF")) {
-    const post = await getPost(tecnica[0]);
+  if (tecnica[1].startsWith("XRF")) {    
     const { Pontos } = JSON.parse(JSON.stringify(post));
     var objetoAnalise;
     Pontos.forEach(ponto => {
@@ -55,7 +56,6 @@ const Grafico = async ({ params }) => {
 
     //FTIR-------------------------------------------------------------
   } else if (tecnica[1].startsWith("FTIR")) {
-    const post = await getPost(tecnica[0]);
     const { Pontos } = JSON.parse(JSON.stringify(post));
     var objetoAnalise;
     Pontos.forEach(ponto => {
@@ -86,7 +86,6 @@ const Grafico = async ({ params }) => {
 
     //MO-------------------------------------------------------------
   } else if (tecnica[1].startsWith("MO")) {
-    const post = await getPost(tecnica[0]);
     const { Pontos } = JSON.parse(JSON.stringify(post));
     var objetoAnalise;
     Pontos.forEach(ponto => {

@@ -3,12 +3,10 @@ import Image from "next/image"
 import PontoAnalise from "../pontoAnalise/pontoAnalise"
 import styles from "./postView.module.css"
 import { useState } from "react"
-import ComboBox from "../comboBox/comboBox"
 import Link from "next/link"
 import ComboBoxTecnicas from "../comboBoxTecnicas/comboBoxTecnicas"
 
 const PostView = ({ post }) => {
-  console.log(post)
   const [isTecnicaListVisible, setIsTechniquesListVisible] = useState(false)
   const [filteredPosts, setFilteredPosts] = useState([]);
   const [selectedOption, setSelectedOption] = useState('Todas');
@@ -36,13 +34,13 @@ const PostView = ({ post }) => {
 
   return (
     <div className={styles.container}>
-      {/* {post.img &&
+      {post.projeto &&
         <div className={styles.imgContainer} id="imgContainer">
-          <Image src={post.img} alt={post.desc} width={700} height={700} className={styles.img} priority={true} />
-          {post.Pontos.map((ponto) => (
-            <PontoAnalise key={ponto.IdPonto} IdPonto={ponto.IdPonto} X={ponto.X} Y={ponto.Y} largImg={post.X} altImg={post.Y} onClick={handlePontoClick} />
+          <Image src={"/flamengo.jpeg"} alt={post.projeto.nome_imagem} width={700} height={700} className={styles.img} priority={true} />
+          {post.pontos.map((ponto) => (
+            <PontoAnalise key={ponto.ponto_id} IdPonto={ponto.ponto_id} X={ponto.coordenada_x} Y={ponto.coordenada_y} largImg={post.projeto.largura_imagem} altImg={post.projeto.altura_imagem} onClick={handlePontoClick} />
           ))}
-        </div>} */}
+        </div>}
       <div className={styles.textContainer}>
         <h1 className={styles.title}>{post.projeto.nome_imagem}</h1>
         <div className={styles.detail}>
@@ -52,33 +50,32 @@ const PostView = ({ post }) => {
           </div>
         </div>
         <div className={styles.contTop}>
-          {/* <ComboBoxTecnicas pontos={post.Pontos} setSortedPosts={handleFilteredPostsChange} onSelectChange={handleSelectChange} /> */}
+          <ComboBoxTecnicas pontos={post.pontos} setSortedPosts={handleFilteredPostsChange} onSelectChange={handleSelectChange} />
           <div className={styles.cont}>
-            {/* <ListPontosETecnicas data={post} slug={post._id}/> */}
-            {/* <div className={styles.row}>
-              <h2>Pontos:</h2> */}
-              {/* <div className={styles.column}>
+            <div className={styles.row}>
+              <h2>Pontos:</h2>
+              <div className={styles.column}>
                 <ul>
                   {filteredPosts.length > 0 ?
                     (
                       filteredPosts.map((ponto) => (
                         <li
-                          key={ponto.IdPonto}
-                          onClick={() => handlePontoClick(ponto.IdPonto)}
-                          className={selectedPonto === ponto.IdPonto ? styles.selected : ""}
+                          key={ponto.ponto_id}
+                          onClick={() => handlePontoClick(ponto.ponto_id)}
+                          className={selectedPonto === ponto.ponto_id ? styles.selected : ""}
                         >
-                          {ponto.Nome}
+                          {ponto.nome_ponto}
                         </li>
                       ))
                     ) : (
                       selectedOption === "Todas" ? (
-                        post.Pontos.map((ponto) => (
+                        post.pontos.map((ponto) => (
                           <li
-                            key={ponto.IdPonto}
-                            onClick={() => handlePontoClick(ponto.IdPonto)}
-                            className={selectedPonto === ponto.IdPonto ? styles.selected : ""}
+                            key={ponto.ponto_id}
+                            onClick={() => handlePontoClick(ponto.ponto_id)}
+                            className={selectedPonto === ponto.ponto_id ? styles.selected : ""}
                           >
-                            {ponto.Nome}
+                            {ponto.nome_ponto}
                           </li>
                         ))
                       ) : null
@@ -91,27 +88,35 @@ const PostView = ({ post }) => {
                 <h2>Técnicas:</h2>
                 <div className={styles.column}>
                   <ul>
-                    {selectedPonto &&
-                      post.Pontos.find((ponto) => ponto.IdPonto === selectedPonto).AnaliseTecnica.map(
-                        (tecnica, index) => (
-                          tecnica.nomeDaTecnica.startsWith(selectedOption) || selectedOption === 'Todas' ? (
-                            <Link
-                              target="blank_"
-                              href={{
-                                pathname: "/grafico/" + post._id + "-" + tecnica.nomeDaTecnica,
-                              }}
-                              key={index}
-                            >
-                              <li>{tecnica.nomeDaTecnica}</li>
-                            </Link>
-                          ) : null
-                        )
-                      )
-                    }
+                    {selectedPonto && (() => {
+                      const ponto = post.pontos.find((p) => p.ponto_id === selectedPonto);
+                      if (!ponto) return null;
+
+                      const todasTecnicas = []
+                        .concat(ponto.tecnicas_ftir || [])
+                        .concat(ponto.tecnicas_mo || [])
+                        .concat(ponto.tecnicas_xrf || []);
+
+                      const tecnicasFiltradas = todasTecnicas.filter(tecnica =>
+                        selectedOption === 'Todas' || tecnica.nome_tecnica.startsWith(selectedOption)
+                      );
+
+                      return tecnicasFiltradas.map((tecnica, index) => (
+                        <Link
+                          target="blank_"
+                          href={{
+                            pathname: "/grafico/" + post.projeto.projeto_id + "-" + tecnica.nome_tecnica,
+                          }}
+                          key={index}
+                        >
+                          <li>{tecnica.nome_tecnica}</li>
+                        </Link>
+                      ));
+                    })()}
                   </ul>
                 </div>
               </div>
-            )} */}
+            )}
           </div>
         </div>
       </div>

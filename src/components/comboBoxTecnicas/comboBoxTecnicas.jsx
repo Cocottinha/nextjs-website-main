@@ -36,7 +36,16 @@ export default function ComboBoxTecnicas({ pontos, setSortedPosts, onSelectChang
         }
 
         const filteredPosts = pontos.filter(ponto => {
-            return ponto.AnaliseTecnica.some(tecnica => tecnica.nomeDaTecnica.startsWith(technique));
+            switch (technique) {
+                case "MO":
+                    return ponto.tecnicas_mo && ponto.tecnicas_mo.length > 0;
+                case "FTIR":
+                    return ponto.tecnicas_ftir && ponto.tecnicas_ftir.length > 0;
+                case "XRF":
+                    return ponto.tecnicas_xrf && ponto.tecnicas_xrf.length > 0;
+                default:
+                    return false;
+            }
         });
         setSortedPosts(filteredPosts);
     };

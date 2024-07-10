@@ -8,7 +8,7 @@ const PostCard = ({post}) => {
         <div className={styles.container}>
             <div className={styles.top}>
                 <div className={styles.imgCont}>
-                    <Image src={"/operarios.jpg"} alt={post.nome_imagem} fill className={styles.img} priority={true}/>
+                    <Image src={"/flamengo.jpeg"} alt={post.nome_imagem} fill className={styles.img} priority={true}/>
                 </div>
                 <span className={styles.date}>{post.created_at.toString().slice(0,10)}</span>
             </div>

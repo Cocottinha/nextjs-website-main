@@ -11,11 +11,11 @@ export default function ComboBox({ posts, setSortedPosts }) {
     setSelectedOption(option);
 
     const sortByDateAscending = () => {
-      setSortedPosts([...posts].sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt)));
+      setSortedPosts([...posts].sort((a, b) => new Date(a.created_at) - new Date(b.created_at)));
     };
 
     const sortByDateDescending = () => {
-      setSortedPosts([...posts].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)));
+      setSortedPosts([...posts].sort((a, b) => new Date(b.created_at) - new Date(a.created_at)));
     };
 
     switch (option) {
@@ -29,7 +29,7 @@ export default function ComboBox({ posts, setSortedPosts }) {
         sortByDateAscending()
         break;
       case '4':
-        setSortedPosts([...posts].sort((a, b) => a.NomeImagem.localeCompare(b.title)));
+        setSortedPosts([...posts].sort((a, b) => a.nome_imagem.localeCompare(b.nome_imagem)));
         break;
       default:
         break;

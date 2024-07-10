@@ -22,9 +22,9 @@ const ListPontosETecnicas = ({ data, slug }) => {
 
   return (
     <div className={styles.container}>
-      <ComboBox pontos={data.Pontos} setSortedPosts={handleFilteredPostsChange} onSelectChange={handleSelectChange} />
+      <ComboBox pontos={data.pontos} setSortedPosts={handleFilteredPostsChange} onSelectChange={handleSelectChange} />
       <div className={styles.caixa}>
-        <ListPontos data={dados} filteredPosts={filteredPosts} selectedOption={selectedOption} slug={slugr}/>
+        <ListPontos data={data} filteredPosts={filteredPosts} selectedOption={selectedOption} slug={slugr}/>
       </div>
     </div>
   )

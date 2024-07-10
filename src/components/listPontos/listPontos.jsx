@@ -33,22 +33,22 @@ const ListPontos = ({ filteredPosts, data, selectedOption, slug }) => {
                 (
                   filteredPosts.map((ponto) => (
                     <li
-                      key={ponto.IdPonto}
-                      onClick={() => handlePontoClick(ponto.IdPonto)}
-                      className={selectedPonto === ponto.IdPonto ? styles.selected : ""}
+                      key={ponto.ponto_id}
+                      onClick={() => handlePontoClick(ponto.ponto_id)}
+                      className={selectedPonto === ponto.ponto_id ? styles.selected : ""}
                     >
-                      {ponto.Nome}
+                      {ponto.nome_ponto}
                     </li>
                   ))
                 ) : (
                   selectedOption === "Todas" ? (
-                    data.Pontos.map((ponto) => (
+                    data.pontos.map((ponto) => (
                       <li
-                        key={ponto.IdPonto}
-                        onClick={() => handlePontoClick(ponto.IdPonto)}
-                        className={selectedPonto === ponto.IdPonto ? styles.selected : ""}
+                        key={ponto.ponto_id}
+                        onClick={() => handlePontoClick(ponto.ponto_id)}
+                        className={selectedPonto === ponto.ponto_id ? styles.selected : ""}
                       >
-                        {ponto.Nome}
+                        {ponto.nome_ponto}
                       </li>
                     ))
                   ) : null

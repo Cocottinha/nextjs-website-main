@@ -3,15 +3,6 @@ import styles from "./page.module.css"
 import axios from "axios"
 import { cookies } from "next/headers"
 
-// const getData = async (slug) => {
-//     const res = await fetch(`http://localhost/api/blog/${slug}`,{next:{revalidate:3600}});
-//     console.log(res)
-//     if(!res.ok)
-//         throw new Error ("Wrong")
-
-//     return res.json(); 
-// };
-
 const getData = async (slug) => {
   const a = cookies().get("access-token")
   console.log(a.value)
@@ -31,7 +22,6 @@ const getData = async (slug) => {
     if (response.status !== 200) {
       throw new Error('Failed to fetch posts');
     }
-    console.log(response)
     return response.data;
   } catch (error) {
     console.error('Error fetching posts:', error);

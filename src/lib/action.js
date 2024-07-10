@@ -115,6 +115,33 @@ export const getPosts = async () => {
   }
 };
 
+export const getPost = async (slug) => {
+  const a = cookies().get("access-token")
+  console.log(a.value)
+  console.log(`${process.env.APIPOST}${slug}`)
+  try {
+    const response = await axios.get(`${process.env.APIPOST}${slug}`, {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json; charset=utf-8',
+        'User-Agent': 'PostmanRuntime/7.39.0',
+        'Connection': 'keep-alive',
+        'Accept-Encoding': 'gzip, deflate, br',
+        'Authorization': `Bearer ${a.value}`
+      }
+    });
+
+    if (response.status !== 200) {
+      throw new Error('Failed to fetch posts');
+    }
+    console.log(response.data)
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching posts:', error);
+    throw error;
+  }
+}
+
 export async function deleteCookies() {
   cookies().delete("access-token");
 }
