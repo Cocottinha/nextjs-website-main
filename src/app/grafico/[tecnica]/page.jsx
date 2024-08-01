@@ -12,16 +12,14 @@ import { readTextFileXRF } from "@/components/charts/getDataXRF";
 
 const Grafico = async ({ params }) => {
   const tecnica = params.tecnica.split('-');
-  console.log(tecnica)
   const post = await getPost(tecnica[0]);
-  console.log(post)
   //XRF-------------------------------------------------------------
   if (tecnica[1].startsWith("XRF")) {    
-    const { Pontos } = JSON.parse(JSON.stringify(post));
+    const Pontos  = post.pontos;
     var objetoAnalise;
-    Pontos.forEach(ponto => {
-      ponto.AnaliseTecnica.forEach(analise => {
-        if (analise.nomeDaTecnica == tecnica[1]) {
+    Pontos.map((ponto) => {
+      ponto.tecnicas_xrf.map((analise) => {
+        if (analise.nome_Tecnica == tecnica[1]) {
           objetoAnalise = analise
           return
         }
@@ -38,7 +36,7 @@ const Grafico = async ({ params }) => {
         const { arrayA, arrayB } = await readTextFileXRF(file);
         return (
           <div className={styles.container}>
-            <h1>{objetoAnalise.nomeDaTecnica}</h1>
+            <h1>{objetoAnalise.nome_tecnica}</h1>
             <Suspense fallback={<Loading />}>
               <PlotComponent x={arrayA} y={arrayB} />
             </Suspense>
@@ -46,7 +44,6 @@ const Grafico = async ({ params }) => {
           </div>
         );
       }
-
     }
     return (
       <div className={styles.container}>
@@ -56,11 +53,11 @@ const Grafico = async ({ params }) => {
 
     //FTIR-------------------------------------------------------------
   } else if (tecnica[1].startsWith("FTIR")) {
-    const { Pontos } = JSON.parse(JSON.stringify(post));
+    const Pontos = post.pontos;
     var objetoAnalise;
-    Pontos.forEach(ponto => {
-      ponto.AnaliseTecnica.forEach(analise => {
-        if (analise.nomeDaTecnica == tecnica[1]) {
+    Pontos.map((ponto) => {
+      ponto.tecnicas_ftir.map((analise) => {
+        if (analise.nome_Tecnica == tecnica[1]) {
           objetoAnalise = analise
           return
         }
@@ -72,7 +69,7 @@ const Grafico = async ({ params }) => {
       const { arrayA, arrayB } = await readTextFileFTIR(file);
       return (
         <div className={styles.container}>
-          <h1>{objetoAnalise.nomeDaTecnica}</h1>
+          <h1>{objetoAnalise.nome_tecnica}</h1>
           <PlotComponent x={arrayA} y={arrayB} />
           <ParamsFTIR objeto={objetoAnalise} />
         </div>
@@ -86,27 +83,29 @@ const Grafico = async ({ params }) => {
 
     //MO-------------------------------------------------------------
   } else if (tecnica[1].startsWith("MO")) {
-    const { Pontos } = JSON.parse(JSON.stringify(post));
+    const Pontos  = post.pontos;
     var objetoAnalise;
-    Pontos.forEach(ponto => {
-      ponto.AnaliseTecnica.forEach(analise => {
-        if (analise.nomeDaTecnica == tecnica[1]) {
-          objetoAnalise = analise
-          return
-        }
-      })
+    Pontos.map((ponto) => {
+      if(ponto.ponto_id == tecnica[0]){
+        ponto.tecnicas_mo.map((analise) => {
+          if (analise.nome_tecnica == tecnica[1]) {
+            objetoAnalise = analise
+            return
+          }
+        })
+      }    
     });
     if (objetoAnalise != null) {
       let file;
-      objetoAnalise.imagensEObjetivas.map(i => {
-        file = i.diretorio
-      })
+      // objetoAnalise.imagensEObjetivas.map(i => {
+      //   file = i.diretorio
+      // })
       return (
         <div className={styles.container}>
-          <h1>{objetoAnalise.nomeDaTecnica}</h1>
+          <h1>{objetoAnalise.nome_tecnica}</h1>
           <div className={styles.twoPanels}>
             <div className={styles.contImg}>
-              <Image className={styles.img} src={file} fill />
+              {/* <Image className={styles.img} src={file} fill /> */}
             </div>
             <ParamsMO objeto={objetoAnalise} />
           </div>
