@@ -38,7 +38,7 @@ const PostView = ({ post }) => {
         <div className={styles.imgContainer} id="imgContainer">
           <Image src={"/flamengo.jpeg"} alt={post.projeto.nome_imagem} width={700} height={700} className={styles.img} priority={true} />
           {post.pontos.map((ponto) => (
-            <PontoAnalise key={ponto.ponto_id} IdPonto={ponto.ponto_id} X={ponto.coordenada_x} Y={ponto.coordenada_y} largImg={post.projeto.largura_imagem} altImg={post.projeto.altura_imagem} onClick={handlePontoClick} />
+            <PontoAnalise key={ponto.ponto_id} IdPonto={ponto.ponto_id} NomePonto={ponto.nome_ponto} X={ponto.coordenada_x} Y={ponto.coordenada_y} largImg={post.projeto.largura_imagem} altImg={post.projeto.altura_imagem} onClick={handlePontoClick} />
           ))}
         </div>}
       <div className={styles.textContainer}>
@@ -105,7 +105,7 @@ const PostView = ({ post }) => {
                         <Link
                           target="blank_"
                           href={{
-                            pathname: "/grafico/" + post.projeto.projeto_id + "-" + tecnica.nome_tecnica,
+                            pathname: "/grafico/" + post.projeto.projeto_id + "-" + ponto.ponto_id + "-" + tecnica.nome_tecnica,
                           }}
                           key={index}
                         >

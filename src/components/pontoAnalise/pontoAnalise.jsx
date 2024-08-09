@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import styles from "./pontoAnalise.module.css";
 
-const PontoAnalise = ({ IdPonto, X, Y, largImg, altImg, onClick }) => {
+const PontoAnalise = ({ IdPonto,NomePonto, X, Y, largImg, altImg, onClick }) => {
     const handleClick = () =>{
         const pontoData = IdPonto;
         onClick(pontoData);
@@ -74,7 +74,7 @@ const PontoAnalise = ({ IdPonto, X, Y, largImg, altImg, onClick }) => {
     }, [windowSize, IdPonto, X, Y, largImg, altImg]);
 
     return (
-        <div className={styles.ponto} id={IdPonto} onClick={handleClick}>Ponto_{IdPonto}</div>
+        <div className={styles.ponto} id={IdPonto} onClick={handleClick}>{NomePonto}</div>
     );
 };
 export default PontoAnalise;
