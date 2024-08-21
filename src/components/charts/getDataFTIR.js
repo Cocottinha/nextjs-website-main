@@ -34,8 +34,7 @@ export async function readTextFileFTIR(file) {
                 const num1 = parseFloat(part[1].trim())
                 arrayA.push(num)
                 arrayB.push(num1);
-            }
-    
+            }    
         })
     }
     
