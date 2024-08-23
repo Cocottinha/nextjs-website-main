@@ -15,7 +15,8 @@
 
 # production
 /build
-public/ftp/
+
+/public/ftp/
 # misc
 .DS_Store
 *.pem
