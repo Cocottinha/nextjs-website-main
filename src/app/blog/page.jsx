@@ -14,6 +14,7 @@ const Blog = () => {
     const fetchData = async () => {
       try {
         const data = await getPosts();
+        console.log(data)
         setPosts(data.Dados);
         setSortedPosts(data.Dados); // Initialize sortedPosts with fetched posts
       } catch (error) {
