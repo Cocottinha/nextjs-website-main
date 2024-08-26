@@ -15,7 +15,8 @@ const PostCard = ({post}) => {
             </div>
             <div className={styles.bottom}>
                 <h1 className={styles.title}>{post.nome_projeto}</h1>
-                <p className={styles.desc}>Autor: {post.nome_autor}</p>                
+                <p className={styles.desc}>Autor: {post.nome_autor}</p>
+                <p className={styles.desc}>Ano: {post.ano_obra}</p>  
             </div>
         </div>
         </Link>

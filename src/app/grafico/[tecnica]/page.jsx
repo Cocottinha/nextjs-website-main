@@ -15,32 +15,32 @@ const Grafico = async ({ params }) => {
   console.log(tecnica)
   const post = await getPost(tecnica[0]);
   //XRF-------------------------------------------------------------
-  if (tecnica[2].startsWith("XRF")) {    
+  if (tecnica[1].startsWith("XRF")) {    
     const Pontos  = post.pontos;
     var objetoAnalise;
     Pontos.map((ponto) => {
-      ponto.tecnicas_xrf.map((analise) => {
-        if (analise.nome_tecnica == tecnica[2]) {
+      ponto.tecnicas.map((analise) => {
+        if (analise.nome_tecnica == tecnica[1]) {
           objetoAnalise = analise
           return
         }
       })
     });
     if (objetoAnalise != null) {
-      const file = objetoAnalise.diretorio
+      const file = `public/ftp/${post.projeto_id}/${objetoAnalise.diretorio}`;
       if (file.length === 0) {
         <div className={styles.container}>
           <h1>Gráfico não encontrado</h1>
         </div>
       }
       else {
-        //const { arrayA, arrayB } = await readTextFileXRF(file);
+        const { arrayA, arrayB } = await readTextFileXRF(file);
         return (
           <div className={styles.container}>
             <h1>{objetoAnalise.nome_tecnica}</h1>
-            {/* <Suspense fallback={<Loading />}>
+            <Suspense fallback={<Loading />}>
               <PlotComponent x={arrayA} y={arrayB} />
-            </Suspense> */}
+            </Suspense>
             <ParamsXRF objeto={objetoAnalise} />
           </div>
         );
@@ -53,25 +53,27 @@ const Grafico = async ({ params }) => {
     )
 
     //FTIR-------------------------------------------------------------
-  } else if (tecnica[2].startsWith("FTIR")) {
+  } else if (tecnica[1].startsWith("FTIR")) {
     const Pontos = post.pontos;
     var objetoAnalise;
     Pontos.map((ponto) => {
-      ponto.tecnicas_ftir.map((analise) => {
-        if (analise.nome_tecnica == tecnica[2]) {
+      ponto.tecnicas.map((analise) => {
+        if (analise.nome_tecnica == tecnica[1]) {
           objetoAnalise = analise
           return
         }
       })
     });
     if (objetoAnalise != null) {
-      const file = objetoAnalise.diretorio
+      const file = `public/ftp/${post.projeto_id}/${objetoAnalise.diretorio}`;
       console.log(file)
-      // const { arrayA, arrayB } = await readTextFileFTIR(file);
+      const { arrayA, arrayB } = await readTextFileFTIR(file);
       return (
         <div className={styles.container}>
           <h1>{objetoAnalise.nome_tecnica}</h1>
-          {/* <PlotComponent x={arrayA} y={arrayB} /> */}
+          <Suspense fallback={<Loading />}>
+              <PlotComponent x={arrayA} y={arrayB} />
+            </Suspense>
           <ParamsFTIR objeto={objetoAnalise} />
         </div>
       );
@@ -83,31 +85,30 @@ const Grafico = async ({ params }) => {
     )
 
     //MO-------------------------------------------------------------
-  } else if (tecnica[2].startsWith("MO")) {
+  } else if (tecnica[1].startsWith("MO")) {
     const Pontos  = post.pontos;
-    console.log(Pontos)
     var objetoAnalise;
     Pontos.map((ponto) => {
-      if(ponto.ponto_id == tecnica[1]){
-        ponto.tecnicas_mo.map((analise) => {
-          if (analise.nome_tecnica == tecnica[2]) {
+        ponto.tecnicas.map((analise) => {
+          if (analise.nome_tecnica == tecnica[1]) {
             objetoAnalise = analise
             return
           }
         })
       }    
-    });
+    );
     if (objetoAnalise != null) {
       let file;
-      // objetoAnalise.imagensEObjetivas.map(i => {
-      //   file = i.diretorio
-      // })
+      objetoAnalise.imagensEAumentos.map(i => {
+         file = `/ftp/${post.projeto_id}/${i.diretorio}`;
+      })
+      console.log("MO",file)
       return (
         <div className={styles.container}>
           <h1>{objetoAnalise.nome_tecnica}</h1>
           <div className={styles.twoPanels}>
             <div className={styles.contImg}>
-              {/* <Image className={styles.img} src={file} fill /> */}
+              <Image className={styles.img} src={file} fill />
             </div>
             <ParamsMO objeto={objetoAnalise} />
           </div>

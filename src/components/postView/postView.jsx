@@ -63,8 +63,20 @@ const PostView = ({ post }) => {
         <h1 className={styles.title}>{post.nome_projeto}</h1>
         <div className={styles.detail}>
           <div className={styles.detailText}>
-            {/* <span className={styles.detailTitle}>Data da Publicação</span>
-            <span className={styles.detailValue}>{post.createdAt.toString().slice(0, 10)}</span> */}
+            <span className={styles.detailTitle}>Nome Autor:</span>
+            <span className={styles.detailValue}>{post.nome_autor}</span>
+          </div>
+          <div className={styles.detailText}>
+            <span className={styles.detailTitle}>Nome Obra:</span>
+            <span className={styles.detailValue}>{post.nome_projeto}</span>
+          </div>
+          <div className={styles.detailText}>
+            <span className={styles.detailTitle}>Ano Obra:</span>
+            <span className={styles.detailValue}>{post.ano_obra}</span>
+          </div>
+          <div className={styles.detailText}>
+            <span className={styles.detailTitle}>Estilo:</span>
+            <span className={styles.detailValue}>{post.estilo}</span>
           </div>
         </div>
         <div className={styles.contTop}>
@@ -108,17 +120,29 @@ const PostView = ({ post }) => {
                     {selectedPonto &&
                       post.pontos.find((ponto) => ponto.ponto_id === selectedPonto).tecnicas.map(
                         (tecnica, index) => (
-                          tecnica.nome_tecnica.startsWith(selectedOption) || selectedOption === 'Todas' ? (
+                          tecnica.nome_tecnica.startsWith("MO") ? (
                             <Link
                               target="blank_"
                               href={{
-                                pathname: "/grafico/" + post._id + "-" + tecnica.nome_tecnica,
+                                pathname: "/imagem/" + post.projeto_id + "-" + tecnica.nome_tecnica,
                               }}
                               key={index}
                             >
                               <li>{tecnica.nome_tecnica}</li>
                             </Link>
-                          ) : null
+                          ) : (
+                            (tecnica.nome_tecnica.startsWith("FTIR") || tecnica.nome_tecnica.startsWith("XRF") || selectedOption === 'Todas') && (
+                              <Link
+                                target="blank_"
+                                href={{
+                                  pathname: "/grafico/" + post.projeto_id + "-" + tecnica.nome_tecnica,
+                                }}
+                                key={index}
+                              >
+                                <li>{tecnica.nome_tecnica}</li>
+                              </Link>
+                            )
+                          )
                         )
                       )
                     }

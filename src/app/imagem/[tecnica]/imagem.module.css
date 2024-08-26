@@ -1,0 +1,54 @@
+.container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.contImg{
+    position: relative;
+    width: 100%;
+    height: 600px;
+    padding: 20px;
+    margin: 20px;
+}
+.twoPanels{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    height: 100%;
+    padding: 30px;
+}
+.img{
+    object-fit:contain;
+}
+@media (max-width:1367px){
+    .contImg{
+        height: 800px;
+    }
+}
+@media (max-width:1260px){
+    .contImg{
+        height: 700px;
+    }
+}
+@media (max-width:1024px){
+    .contImg{
+        height: 600px;
+    }
+}
+@media (max-width:768px){
+    .contImg{
+        height: 500px;
+    }
+}
+@media (max-width:640px){
+    .contImg{
+        height: 400px;
+    }
+}
+@media (max-width:476px){
+    .contImg{
+        height: 300px;
+    }
+}

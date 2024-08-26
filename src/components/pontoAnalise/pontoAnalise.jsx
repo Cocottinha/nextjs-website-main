@@ -63,13 +63,13 @@ const PontoAnalise = ({ IdPonto,NomePonto, X, Y, largImg, altImg, onClick }) => 
                 b = altImg / (altImg * (y));
                 break;
             case (windowSize.width < 1367):
-                y = (847) / largImg;
-                a = largImg / 847;
+                y = (820) / largImg;
+                a = largImg / 820;
                 b = altImg / (altImg * (y));
                 break;    
             case (windowSize.width < 1537):
-                y = (932) / largImg;
-                a = largImg / 932;
+                y = (906) / largImg;
+                a = largImg / 906;
                 b = altImg / (altImg * (y));
                 break;
             default:
