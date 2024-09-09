@@ -8,8 +8,8 @@ const Home = () => {
     <div className={styles.textbox}>
       <h1 className={styles.title}>Nº1 do Brasil!</h1>
       <p className={styles.desc}>
-        1º Equipe Nacional a utilizar e dominar a tecnologia de MA-XRF!<br/> Sediado no Campus IFRJ-Paracambi!<br/>
-        A Equipe do Laboratório Móvel se mostra influente e uma potência na área das análises físico-químicas de obras de arte!
+        Primeira Equipe Nacional a Utilizar e Dominar a Tecnologia de MA-XRF!<br/>
+        Sediada no Campus IFRJ-Paracambi, a equipe do Laboratório Móvel se destaca como uma potência na área das análises físico-químicas de obras de arte.
       </p>
       <div className={styles.buttons}>
         <Link href={"/about"} target="_blank"><button className={styles.button}>Saiba Mais</button></Link>

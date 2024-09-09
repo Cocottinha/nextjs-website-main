@@ -63,15 +63,15 @@ const PostView = ({ post }) => {
         <h1 className={styles.title}>{post.nome_projeto}</h1>
         <div className={styles.detail}>
           <div className={styles.detailText}>
-            <span className={styles.detailTitle}>Nome Autor:</span>
+            <span className={styles.detailTitle}>Autor:</span>
             <span className={styles.detailValue}>{post.nome_autor}</span>
           </div>
           <div className={styles.detailText}>
-            <span className={styles.detailTitle}>Nome Obra:</span>
+            <span className={styles.detailTitle}>Nome:</span>
             <span className={styles.detailValue}>{post.nome_projeto}</span>
           </div>
           <div className={styles.detailText}>
-            <span className={styles.detailTitle}>Ano Obra:</span>
+            <span className={styles.detailTitle}>Ano:</span>
             <span className={styles.detailValue}>{post.ano_obra}</span>
           </div>
           <div className={styles.detailText}>
