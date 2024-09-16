@@ -1,17 +1,18 @@
-"use client"
+"use client";
+import { useState } from "react";
 import Image from "next/image";
 import PontoAnalise from "../pontoAnalise/pontoAnalise";
 import styles from "./postView.module.css";
-import { useState } from "react";
 import Link from "next/link";
 import ComboBoxTecnicas from "../comboBoxTecnicas/comboBoxTecnicas";
 
 const PostView = ({ post }) => {
-  console.log(post);
   const [isTecnicaListVisible, setIsTechniquesListVisible] = useState(false);
   const [filteredPosts, setFilteredPosts] = useState([]);
   const [selectedOption, setSelectedOption] = useState('Todas');
   const [selectedPonto, setSelectedPonto] = useState(null);
+  const [imageSrc, setImageSrc] = useState(`/ftp/${post.projeto_id}/${post.nome_imagem}${post.extensao_imagem}`);
+  const [imgError, setImgError] = useState(false);
 
   const handlePontoClick = (pontoId) => {
     setSelectedPonto(pontoId);
@@ -33,17 +34,23 @@ const PostView = ({ post }) => {
     setSelectedOption(selectedOption);
   };
 
+  const handleImgError = () => {
+    setImgError(true);
+    setImageSrc(`/ftp/notfound.png`); // Substitua pelo caminho da imagem de fallback
+  };
+
   return (
     <div className={styles.container}>
       {post && (
         <div className={styles.imgContainer} id="imgContainer">
           <Image
-            src={`/ftp/${post.projeto_id}/${post.nome_imagem}${post.extensao_imagem}`}
+            src={imageSrc}
             alt={post.nome_imagem}
             width={post.largura_imagem}
             height={post.altura_imagem}
             className={styles.img}
             priority={true}
+            onError={handleImgError} // Chama handleImgError se a imagem não carregar
           />
           {post.pontos.map((ponto) => (
             <PontoAnalise
@@ -123,9 +130,7 @@ const PostView = ({ post }) => {
                           tecnica.nome_tecnica.startsWith("MO") ? (
                             <Link
                               target="blank_"
-                              href={{
-                                pathname: "/imagem/" + post.projeto_id + "-" + tecnica.nome_tecnica,
-                              }}
+                              href={`/imagem/${post.projeto_id}-${tecnica.nome_tecnica}`}
                               key={index}
                             >
                               <li>{tecnica.nome_tecnica}</li>
@@ -134,9 +139,7 @@ const PostView = ({ post }) => {
                             (tecnica.nome_tecnica.startsWith("FTIR") || tecnica.nome_tecnica.startsWith("XRF") || selectedOption === 'Todas') && (
                               <Link
                                 target="blank_"
-                                href={{
-                                  pathname: "/grafico/" + post.projeto_id + "-" + tecnica.nome_tecnica,
-                                }}
+                                href={`/grafico/${post.projeto_id}-${tecnica.nome_tecnica}`}
                                 key={index}
                               >
                                 <li>{tecnica.nome_tecnica}</li>
