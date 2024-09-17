@@ -1,3 +1,4 @@
+"use client"
 import NewPassword from "@/components/newPasswordForm/newPasswordForm"
 import styles from "./changePassword.module.css"
 

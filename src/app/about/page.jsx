@@ -1,14 +1,14 @@
+"use client"
 import styles from "./about.module.css"
 import Image from "next/image"
 
-export const metadata = {
-    title: 'About',
-    description: 'About us and our work!',
-  }
+// export const metadata = {
+//     title: 'About',
+//     description: 'About us and our work!',
+//   }
 
 const About = () =>{
-    return(
-        
+    return(        
         <div className={styles.container}>
             <div className={styles.textContainer}>                
                 <h1 className={styles.title}>Somos uma equipe de cientistas, pesquisadores e desenvolvedores!</h1>

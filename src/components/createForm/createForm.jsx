@@ -2,7 +2,6 @@
 import { useState } from "react";
 import styles from "./createForm.module.css";
 import { register } from "@/lib/action";
-import { redirect } from "next/navigation";
 
 const CreateForm = () => {
   const [errorMessage, setErrorMessage] = useState("");

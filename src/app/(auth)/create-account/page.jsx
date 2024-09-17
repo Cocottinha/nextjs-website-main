@@ -1,3 +1,4 @@
+"use client"
 import styles from "./create.module.css"
 import CreateForm from "@/components/createForm/createForm"
 const CreateAccount = () => {

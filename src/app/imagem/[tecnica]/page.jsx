@@ -1,3 +1,4 @@
+"use client"
 import styles from "./imagem.module.css";
 import Image from 'next/image'; // Certifique-se de importar o componente Image corretamente
 import { getPost } from "@/lib/action";
