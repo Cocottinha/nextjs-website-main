@@ -1,5 +1,5 @@
-"use client"
-import { useState } from "react";
+"use client";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import styles from "./postCard.module.css";
 import Link from "next/link";
@@ -10,8 +10,13 @@ const PostCard = ({ post }) => {
 
   const handleImgError = () => {
     setImgError(true);
-    setImageSrc(`/ftp/notfound.png`)
+    setImageSrc(`/ftp/notfound.png`);
   };
+
+  useEffect(() => {
+    setImageSrc(`/ftp/${post.projeto_id}/${post.nome_imagem}${post.extensao_imagem}`);
+    setImgError(false);
+  }, [post]);
 
   return (
     <Link className={styles.link} href={`/blog/${post.projeto_id}`}>
@@ -24,9 +29,8 @@ const PostCard = ({ post }) => {
               fill
               className={styles.img}
               priority={true}
-              onError={handleImgError} // Chama handleImgError se a imagem não carregar
+              onError={handleImgError}
             />
-
           </div>
           <span className={styles.date}>{post.created_at.toString().slice(0, 10)}</span>
         </div>

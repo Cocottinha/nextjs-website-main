@@ -14,9 +14,8 @@ const Blog = () => {
     const fetchData = async () => {
       try {
         const data = await getPosts();
-        console.log(data)
         setPosts(data.Dados);
-        setSortedPosts(data.Dados); // Initialize sortedPosts with fetched posts
+        setSortedPosts(data.Dados);
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
@@ -34,7 +33,7 @@ const Blog = () => {
       </div>
       <div className={styles.container}>
         {isLoading ? (
-          <div className={styles.loading}>Loading...</div> // You can customize the loading style
+          <div className={styles.loading}>Loading...</div>
         ) : (
           sortedPosts.length > 0 ? (
             sortedPosts.map((post) => (

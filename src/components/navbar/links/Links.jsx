@@ -24,10 +24,6 @@ const links = [
     path: "/about",
   },
   {
-    title: "Contato",
-    path: "/contact",
-  },
-  {
     title: "Postagens",
     path: "/blog",
   },

@@ -40,7 +40,6 @@ export const register = async (name, email, password, c_password) => {
     c_password: c_password.toString()   
   };
 
-  console.log("back:",JSON.stringify(requestData))
   try {
     const response = await axios.post(process.env.APIREGISTER, requestData, {
       headers: {
@@ -48,8 +47,6 @@ export const register = async (name, email, password, c_password) => {
         'Content-Type': 'application/json; charset=utf-8',
       }
     });
-
-    console.log("Response:", response.data)
 
     if (!response.data.Sucesso) {
       throw new Error('Token not found in the response');
@@ -69,7 +66,6 @@ export const changePassword = async (email, password, c_password) => {
     c_password: c_password.toString()   
   };
 
-  console.log("back:",JSON.stringify(requestData))
   try {
     const response = await axios.post(process.env.APIREGISTER, requestData, {
       headers: {
@@ -77,8 +73,6 @@ export const changePassword = async (email, password, c_password) => {
         'Content-Type': 'application/json; charset=utf-8',
       }
     });
-
-    console.log("Response:", response.data)
 
     if (!response.data.Sucesso) {
       throw new Error('Token not found in the response');
@@ -89,6 +83,34 @@ export const changePassword = async (email, password, c_password) => {
     throw new Error(error.message + '| Create failed');
   }
 };
+
+// export const getPosts = async () => {
+//   const a = cookies().get("access-token");
+  
+//   try {
+//     const response = await fetch(process.env.APIPOSTS, {
+//       method: 'GET',
+//       headers: {
+//         'Accept': 'application/json',
+//         'Content-Type': 'application/json; charset=utf-8',
+//         'User-Agent': 'PostmanRuntime/7.39.0',
+//         'Connection': 'keep-alive',
+//         'Accept-Encoding': 'gzip, deflate, br',
+//         'Authorization': `Bearer ${a.value}`
+//       }
+//     });
+
+//     if (!response.ok) {
+//       throw new Error('Failed to fetch posts');
+//     }
+
+//     const data = await response.json();
+//     return data;
+//   } catch (error) {
+//     console.error('Error fetching posts:', error);
+//     throw error;
+//   }
+// };
 
 export const getPosts = async () => {
   const a = cookies().get("access-token")
@@ -117,8 +139,6 @@ export const getPosts = async () => {
 
 export const getPost = async (slug) => {
   const a = cookies().get("access-token")
-  console.log(a.value)
-  console.log(`${process.env.APIPOST}${slug}`)
   try {
     const response = await axios.get(`${process.env.APIPOST}${slug}`, {
       headers: {
@@ -134,7 +154,6 @@ export const getPost = async (slug) => {
     if (response.status !== 200) {
       throw new Error('Failed to fetch posts');
     }
-    console.log(response.data)
     return response.data;
   } catch (error) {
     console.error('Error fetching posts:', error);

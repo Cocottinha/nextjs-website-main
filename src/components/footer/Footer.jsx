@@ -1,3 +1,4 @@
+"use client"
 import styles from "@/components/footer/footer.module.css"
 const Footer = () => {
     return(

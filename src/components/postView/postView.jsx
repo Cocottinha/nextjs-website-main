@@ -50,7 +50,7 @@ const PostView = ({ post }) => {
             height={post.altura_imagem}
             className={styles.img}
             priority={true}
-            onError={handleImgError} // Chama handleImgError se a imagem não carregar
+            onError={handleImgError}
           />
           {post.pontos.map((ponto) => (
             <PontoAnalise

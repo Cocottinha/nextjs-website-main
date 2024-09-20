@@ -31,7 +31,7 @@ const Navbar = () => {
     <div className={styles.container}>
       <div>
         <Link href="/" className={styles.logo}>
-          <Image src="/Lab.Mov_Símbolo_Principal.svg" width={40} height={40} className={styles.logoI} alt="logo" />Lab.Data
+          <Image src="/Lab.Mov_Simbolo_Principal.svg" width={40} height={40} className={styles.logoI} alt="logo"/>Lab.Data
         </Link>
       </div>
       <div>
