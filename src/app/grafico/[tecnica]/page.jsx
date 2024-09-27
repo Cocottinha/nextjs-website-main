@@ -12,7 +12,6 @@ import { readTextFileXRF } from "@/components/charts/getDataXRF";
 
 const Grafico = async ({ params }) => {
   const tecnica = params.tecnica.split('-');
-  console.log(tecnica)
   const post = await getPost(tecnica[0]);
   //XRF-------------------------------------------------------------
   if (tecnica[1].startsWith("XRF")) {    
